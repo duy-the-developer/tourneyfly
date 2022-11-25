@@ -1,5 +1,6 @@
-import React from 'react'
+// packages
 import { useUser } from '@auth0/nextjs-auth0'
+import Image from 'next/image'
 
 const UserProfile = () => {
   const { user, error, isLoading } = useUser()
@@ -11,7 +12,7 @@ const UserProfile = () => {
     <>
       {user && (
         <div>
-          <img src={user.picture!} alt={user.name!} />
+          <Image src={user.picture!} alt={user.name!} />
           <h2>{user.name}</h2>
           <p>{user.email}</p>
         </div>
