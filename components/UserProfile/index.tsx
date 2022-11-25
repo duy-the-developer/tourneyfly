@@ -12,7 +12,10 @@ const UserProfile = () => {
     <>
       {user && (
         <div>
-          <Image src={user.picture!} alt={user.name!} />
+          <picture>
+            <source srcSet={user.picture!} />
+            <img src={user.picture!} alt={user.name!} />{' '}
+          </picture>
           <h2>{user.name}</h2>
           <p>{user.email}</p>
         </div>
