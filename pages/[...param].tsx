@@ -1,6 +1,11 @@
 import Layout from '../components/Layout'
 import Container from '../components/common/Container'
 import Aside from '../components/common/Aside'
+import Section from '../components/common/Section'
+import HighlightMatch from '../components/HighlightMatch'
+import Headlines from '../components/Headlines'
+
+import { currentMatch } from '../data.test'
 
 const NotFound = () => {
   return (
@@ -12,7 +17,14 @@ const NotFound = () => {
           </h1>
         </Container>
       </main>
-      <Aside />
+      <Aside>
+        <Section label='highlight'>
+          <HighlightMatch match={currentMatch} />
+        </Section>
+        <Section label='Top sports headlines from United Kingdom'>
+          <Headlines />
+        </Section>
+      </Aside>
     </Layout>
   )
 }
