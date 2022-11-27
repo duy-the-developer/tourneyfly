@@ -8,18 +8,20 @@ import Headlines from '../components/Headlines'
 import { currentMatch } from '../data.test'
 import { TArticle } from './types'
 
-export async function getStaticProps() {
-  const response = await fetch(
-    'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
-  )
-  const parsedRes = await response.json()
-  const { articles } = parsedRes
-  return {
-    props: {
-      articles,
-    },
-  }
-}
+// export async function getStaticProps() {
+//   const response = await fetch(
+//     'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
+//   )
+//   const parsedRes = await response.json()
+//   const { articles } = parsedRes
+//   return {
+//     props: {
+//       articles,
+//     },
+//   }
+// }
+
+//TODO: Add getStaticPaths
 
 const NotFound = ({ articles }: { articles: TArticle[] }) => {
   return (
@@ -36,7 +38,7 @@ const NotFound = ({ articles }: { articles: TArticle[] }) => {
           <HighlightMatch match={currentMatch} />
         </Section>
         <Section label='Top sports headlines from United Kingdom'>
-          <Headlines articles={articles} />
+          {/* <Headlines articles={articles} /> */}
         </Section>
       </Aside>
     </Layout>
