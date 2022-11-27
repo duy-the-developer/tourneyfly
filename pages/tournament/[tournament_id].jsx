@@ -5,7 +5,7 @@ import Match from '../../components/Match'
 
 import { questions } from '../../data.test'
 
-const Home = () => {
+const Tournament = () => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
@@ -21,4 +21,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Tournament 
