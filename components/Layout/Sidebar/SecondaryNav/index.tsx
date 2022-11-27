@@ -7,7 +7,7 @@ const SecondaryNav = () => {
         className='px-3 text-sm font-medium text-aqua'
         id='communities-headline'
       >
-        My Tourneys
+        My Tournaments
       </p>
       <div className='mt-3 space-y-2' aria-labelledby='communities-headline'>
         {communities.map((community) => (

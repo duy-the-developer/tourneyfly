@@ -83,3 +83,26 @@ export const trendingPosts = [
   },
   // More posts...
 ]
+export const tournaments = [
+  {
+    id: 1,
+    title: 'Losers Do Dishes',
+    startDate: '2022-10-27',
+    status: 'Completed',
+    teamNum: 6,
+  },
+  {
+    id: 2,
+    title: 'My Tournament',
+    startDate: '2022-11-28',
+    status: 'On-going',
+    teamNum: 8,
+  },
+  {
+    id: 3,
+    title: 'Play For Bubble Tea',
+    startDate: '2022-12-08',
+    status: 'Upcoming',
+    teamNum: 4,
+  },
+]
