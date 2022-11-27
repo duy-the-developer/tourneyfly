@@ -1,11 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  * {
+  :root {
     font-family: 'Inter', sans-serif;
-    @apply bg-purple text-white;
+    @apply bg-dblue text-black;
+  }
+
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+  } 
+
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply h-full;
   }
 }

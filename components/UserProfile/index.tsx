@@ -1,6 +1,5 @@
 // packages
 import { useUser } from '@auth0/nextjs-auth0'
-import Image from 'next/image'
 
 const UserProfile = () => {
   const { user, error, isLoading } = useUser()

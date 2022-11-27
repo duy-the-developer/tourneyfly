@@ -1,14 +1,16 @@
-import React from 'react'
-import UserProfile from '../components/UserProfile'
+import Layout from '../components/Layout'
+
+import Aside from '../components/common/Aside'
+import MatchList from '../components/common/MatchList'
 
 const Home = () => {
   return (
-    <>
-      <div>Home</div>
-      <a href='/api/auth/login'>Login</a>
-      <a href='/api/auth/logout'>Logout</a>
-      <UserProfile />
-    </>
+    <Layout>
+      <main className='lg:col-span-9 xl:col-span-6'>
+        <MatchList />
+      </main>
+      <Aside />
+    </Layout>
   )
 }
 
