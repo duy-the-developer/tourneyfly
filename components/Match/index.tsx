@@ -13,7 +13,7 @@ import {
   StarIcon,
 } from '@heroicons/react/20/solid'
 
-import classNames from '../../../../utils/classNames'
+import classNames from '../../utils/classNames'
 
 type TQuestion = {
   id: string
@@ -36,7 +36,7 @@ const Match = ({ question }: { question: TQuestion }) => {
   return (
     <li
       key={question.id}
-      className='rounded-lg bg-dpurple px-4 py-6 shadow sm:p-6'
+      className='text-aqua rounded-lg bg-purple px-4 py-6 shadow sm:p-6'
     >
       Match
     </li>

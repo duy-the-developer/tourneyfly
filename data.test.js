@@ -17,10 +17,10 @@ export const userNavigation = [
   { name: 'Sign out', href: '#' },
 ]
 export const navigation = [
-  { name: 'Quick Match', href: '#', icon: BoltIcon, current: false },
-  { name: 'Tournaments', href: '#', icon: TrophyIcon, current: true },
-  { name: 'Teams', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Players', href: '#', icon: UsersIcon, current: false },
+  { name: 'Tournaments', href: '/', icon: TrophyIcon, current: true },
+  { name: 'Quick Match', href: '/quick-match', icon: BoltIcon, current: false },
+  { name: 'Teams', href: '/teams', icon: UserGroupIcon, current: false },
+  { name: 'Players', href: 'players', icon: UsersIcon, current: false },
 ]
 export const communities = [
   { name: 'Movies', href: '#' },

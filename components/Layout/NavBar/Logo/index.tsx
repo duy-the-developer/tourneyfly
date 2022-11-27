@@ -1,11 +1,11 @@
-import React from 'react'
+import Link from 'next/link'
 
 const Logo = () => {
   return (
     <div className='flex flex-shrink-0 items-center'>
-      <a href='#'>
+      <Link href='/'>
         <h1 className='text-2xl text-orange'>TOURNEYFLY</h1>
-      </a>
+      </Link>
     </div>
   )
 }

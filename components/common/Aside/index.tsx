@@ -11,7 +11,7 @@ const Aside = () => {
         <section aria-labelledby='tournament-details'>
           {/* // TODO: Add Tournament Details */}
         </section>
-        <section aria-labelledby='ranking'></section>
+        <section aria-labelledby='ranking'>{}</section>
       </div>
     </aside>
   )

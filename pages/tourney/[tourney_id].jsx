@@ -1,12 +1,20 @@
 import Aside from '../../components/common/Aside'
 import Layout from '../../components/Layout'
-import MatchList from '../../components/common/MatchList'
+import ItemList from '../../components/common/ItemList'
+import Match from '../../components/Match'
+
+import { questions } from '../../data.test'
 
 const Home = () => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
-        <MatchList />
+        <ItemList>{
+          questions.map((question) => {
+            return <Match question={question}/>
+          }) 
+          }
+        </ItemList>
       </main>
       <Aside />
     </Layout>

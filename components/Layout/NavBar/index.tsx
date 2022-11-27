@@ -37,17 +37,17 @@ const NavBar = () => {
               <MobileMenuButton open={open} />
               <div className='hidden lg:flex lg:items-center lg:justify-end xl:col-span-4'>
                 <Link
-                  href='#'
+                  href='/quick-match'
                   className='ml-5 flex-shrink-0 rounded-full bg-gray-900 p-1 text-aqua hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
                 >
-                  <span className='sr-only'>View notifications</span>
+                  <span className='sr-only'>Quick match</span>
                   <BoltIcon className='h-6 w-6' aria-hidden='true' />
                 </Link>
                 <Link
-                  href='#'
+                  href='/'
                   className='ml-5 flex-shrink-0 rounded-full bg-gray-900 p-1 text-aqua hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
                 >
-                  <span className='sr-only'>View notifications</span>
+                  <span className='sr-only'>Tournaments</span>
                   <TrophyIcon className='h-6 w-6' aria-hidden='true' />
                 </Link>
 
