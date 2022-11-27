@@ -9,7 +9,7 @@ const Aside = () => {
     <aside className='hidden xl:col-span-4 xl:block'>
       <div className='sticky top-4 space-y-4'>
         <section aria-labelledby='tournament-details'>
-          // TODO: Add Tournament Details
+          {/* // TODO: Add Tournament Details */}
         </section>
         <section aria-labelledby='ranking'></section>
       </div>
