@@ -7,10 +7,24 @@ import Section from '../components/common/Section'
 
 import { tournaments } from '../data.test'
 import { currentMatch } from '../data.test'
-import { useEffect } from 'react'
 import Headlines from '../components/Headlines'
 
-const Home = () => {
+import type { TArticle } from './types'
+
+export async function getStaticProps() {
+  const response = await fetch(
+    'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
+  )
+  const parsedRes = await response.json()
+  const { articles } = parsedRes
+  return {
+    props: {
+      articles,
+    },
+  }
+}
+
+const Home = ({ articles }: { articles: TArticle[] }) => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
@@ -25,7 +39,7 @@ const Home = () => {
           <HighlightMatch match={currentMatch} />
         </Section>
         <Section label='Top sports headlines from United Kingdom'>
-          <Headlines />
+          <Headlines articles={articles} />
         </Section>
       </Aside>
     </Layout>
