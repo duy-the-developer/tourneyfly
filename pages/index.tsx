@@ -9,7 +9,7 @@ import { tournaments } from '../data.test'
 import { currentMatch } from '../data.test'
 import Headlines from '../components/Headlines'
 
-import type { TArticle } from './types'
+import type { TArticle } from '../types/TArticle'
 
 export async function getStaticProps() {
   const response = await fetch(

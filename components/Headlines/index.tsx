@@ -1,6 +1,6 @@
 import { parseISO, format } from 'date-fns'
 
-import type { TArticle } from '../../pages/types'
+import type { TArticle } from '../../types/TArticle'
 const Headlines = ({ articles }: { articles: TArticle[] }) => {
   return (
     <ul className='bg-slate-900 rounded-lg'>

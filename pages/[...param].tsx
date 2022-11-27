@@ -6,7 +6,7 @@ import HighlightMatch from '../components/HighlightMatch'
 import Headlines from '../components/Headlines'
 
 import { currentMatch } from '../data.test'
-import { TArticle } from './types'
+import { TArticle } from '../types/TArticle'
 
 // export async function getStaticProps() {
 //   const response = await fetch(
