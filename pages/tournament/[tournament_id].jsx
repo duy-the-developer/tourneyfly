@@ -9,14 +9,17 @@ const Tournament = () => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
-        <ItemList>{
+        <h1 className='text-aqua'>TOURNAMENT PAGE COMING SOON</h1>
+        {/* <ItemList>{
           questions.map((question) => {
             return <Match question={question} key={question.id}/>
           }) 
           }
-        </ItemList>
+        </ItemList> */}
       </main>
-      <Aside />
+      <Aside>
+        <h1 className='text-aqua'>Aside</h1>
+      </Aside>
     </Layout>
   )
 }
