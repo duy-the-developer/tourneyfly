@@ -3,7 +3,7 @@ import { parseISO, format } from 'date-fns'
 import type { TArticle } from '../../pages/types'
 const Headlines = ({ articles }: { articles: TArticle[] }) => {
   return (
-    <ul className='bg-purple rounded-lg'>
+    <ul className='bg-slate-900 rounded-lg'>
       {articles.map((each) => {
         const { publishedAt, title, url, urlToImage } = each
 

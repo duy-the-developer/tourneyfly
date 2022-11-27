@@ -17,14 +17,14 @@ type TMatch = {
 const HighlightMatch = ({ match }: { match: TMatch }) => {
   const { id, teamA, teamB } = match
   return (
-    <div className='bg-purple rounded-lg px-4 py-4 shadow sm:px-4 sm:py-4'>
+    <div className='bg-slate-900 rounded-lg shadow px-4 py-4'>
       <p className='bg-green inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-slate-800'>
         LIVE
       </p>
       <ul>
         <li key={match.id}>
           <Link href={`/match/${id}`}>
-            <div className='flex justify-evenly  text-white rounded-lg bg-purple  hover:bg-dpurple hover:cursor-pointer'>
+            <div className='flex justify-evenly  text-white bg-slate-900  hover:bg-dpurple hover:cursor-pointer'>
               <div className='flex flex-col justify-center items-center space-y-4 w-1/3'>
                 <picture>
                   <img
