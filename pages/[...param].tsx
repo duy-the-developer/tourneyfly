@@ -6,8 +6,22 @@ import HighlightMatch from '../components/HighlightMatch'
 import Headlines from '../components/Headlines'
 
 import { currentMatch } from '../data.test'
+import { TArticle } from './types'
 
-const NotFound = () => {
+export async function getStaticProps() {
+  const response = await fetch(
+    'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
+  )
+  const parsedRes = await response.json()
+  const { articles } = parsedRes
+  return {
+    props: {
+      articles,
+    },
+  }
+}
+
+const NotFound = ({ articles }: { articles: TArticle[] }) => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
@@ -22,7 +36,7 @@ const NotFound = () => {
           <HighlightMatch match={currentMatch} />
         </Section>
         <Section label='Top sports headlines from United Kingdom'>
-          <Headlines />
+          <Headlines articles={articles} />
         </Section>
       </Aside>
     </Layout>
