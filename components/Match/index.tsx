@@ -15,27 +15,20 @@ import {
 
 import classNames from '../../utils/classNames'
 
-type TQuestion = {
+type TTeam = {
   id: string
-  likes: string
-  replies: string
-  views: string
-  author: {
-    name: string
-    imageUrl: string
-    href: string
-  }
-  date: string
-  datetime: string
-  href: string
-  title: string
-  body: string
+  name: string
 }
 
-const Match = ({ question }: { question: TQuestion }) => {
+type TMatch = {
+  id: number
+  teams: TTeam[]
+}
+
+const Match = ({ match }: { match: TMatch }) => {
   return (
     <li
-      key={question.id}
+      key={match.id}
       className='text-aqua rounded-lg bg-purple px-4 py-6 shadow sm:p-6'
     >
       Match

@@ -86,23 +86,38 @@ export const trendingPosts = [
 export const tournaments = [
   {
     id: 1,
-    title: 'Losers Do Dishes',
+    title: 'LOSERS DO DISHES',
     startDate: '2022-10-27',
     status: 'Completed',
     teamNum: 6,
   },
   {
     id: 2,
-    title: 'My Tournament',
+    title: 'MY TOURNAMENT',
     startDate: '2022-11-28',
     status: 'On-going',
     teamNum: 8,
   },
   {
     id: 3,
-    title: 'Play For Bubble Tea',
+    title: 'PLAY FOR BUBBLE TEA',
     startDate: '2022-12-08',
     status: 'Upcoming',
     teamNum: 4,
   },
 ]
+export const currentMatch = {
+  id: 1,
+  teamA: {
+    id: '01',
+    name: '925ers',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/brazil/flag-square-250.png',
+    score: 1,
+  },
+  teamB: {
+    id: '02',
+    name: 'Team Caffeine',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/serbia/flag-square-250.png',
+    score: 0,
+  },
+}
