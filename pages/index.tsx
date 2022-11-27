@@ -11,7 +11,7 @@ const Home = () => {
       <main className='lg:col-span-9 xl:col-span-6'>
         <ItemList>
           {tournaments.map((each) => {
-            return <Tournament tournament={each} />
+            return <Tournament tournament={each} key={each.id} />
           })}
         </ItemList>
       </main>

@@ -11,7 +11,7 @@ const Home = () => {
       <main className='lg:col-span-9 xl:col-span-6'>
         <ItemList>{
           questions.map((question) => {
-            return <Match question={question}/>
+            return <Match question={question} key={question.id}/>
           }) 
           }
         </ItemList>
