@@ -1,4 +1,5 @@
 import { PlusIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 type TUser = {
   name: string
@@ -11,14 +12,16 @@ const TeamCard = ({ user }: { user: TUser }) => {
   return (
     <li key={user.handle} className='flex items-center space-x-3 py-4'>
       <div className='flex-shrink-0'>
-        <img className='h-8 w-8 rounded-full' src={user.imageUrl} alt='' />
+        <picture>
+          <img className='h-8 w-8 rounded-full' src={user.imageUrl} alt='' />
+        </picture>
       </div>
       <div className='min-w-0 flex-1'>
         <p className='text-sm font-medium text-gray-900'>
-          <a href={user.href}>{user.name}</a>
+          <Link href={user.href}>{user.name}</Link>
         </p>
         <p className='text-sm text-gray-500'>
-          <a href={user.href}>{'@' + user.handle}</a>
+          <Link href={user.href}>{'@' + user.handle}</Link>
         </p>
       </div>
       <div className='flex-shrink-0'>

@@ -7,7 +7,7 @@ const ItemList = () => {
       <h1 className='sr-only'>Recent questions</h1>
       <ul role='list' className='space-y-4'>
         {questions.map((question) => (
-          <Match question={question} />
+          <Match question={question} key={question.id} />
         ))}
       </ul>
     </div>
