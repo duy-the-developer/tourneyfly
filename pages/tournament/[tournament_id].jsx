@@ -20,7 +20,7 @@ import { tournaments } from '../../data.test'
 const Tournament = () => {
   const navigation = {
     main: [
-      { name: 'Leader Board', href: '/', icon: ChartBarIcon, current: true },
+      { name: 'Leaderboard', href: '/', icon: ChartBarIcon, current: true },
       {
         name: 'Results',
         href: '/quick-match',
