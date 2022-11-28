@@ -9,8 +9,13 @@ import classNames from '../../../../utils/classNames'
 // data
 import { user, userNavigation, navigation } from '../../../../data.test'
 import ProfileImage from '../../../common/ProfileImage'
+import { TMainNav } from '../../../../types/TNavigation'
 
-const MobileNav = () => {
+type TProps = {
+  navigation: TMainNav
+}
+
+const MobileNav = ({ navigation }: TProps) => {
   return (
     <Popover.Panel
       as='nav'
@@ -18,19 +23,19 @@ const MobileNav = () => {
       aria-label='Global'
     >
       <div className='mx-auto max-w-3xl space-y-1 px-2 pt-2 pb-3 sm:px-4'>
-        {navigation.map((item) => (
+        {navigation.map((each) => (
           <Link
-            key={item.name}
-            href={item.href}
-            aria-current={item.current ? 'page' : undefined}
+            key={each.name}
+            href={each.href}
+            aria-current={each.current ? 'page' : undefined}
             className={classNames(
-              item.current
+              each.current
                 ? 'bg-aqua text-gray-800'
                 : 'hover:bg-yellow text-aqua hover:text-gray-900',
               'block rounded-md py-2 px-3 text-base font-medium'
             )}
           >
-            {item.name}
+            {each.name}
           </Link>
         ))}
       </div>

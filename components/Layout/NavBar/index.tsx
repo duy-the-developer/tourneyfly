@@ -1,6 +1,6 @@
 // packages
 import { Popover } from '@headlessui/react'
-import { BellIcon, BoltIcon, TrophyIcon } from '@heroicons/react/24/outline'
+import { BoltIcon, TrophyIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
 // components
@@ -14,8 +14,13 @@ import SearchBar from '../../SearchBar'
 import ProfileDropdown from './ProfileDropdown'
 import MobileMenuButton from './MobileMenuButton'
 import MobileNav from './MobileNav'
+import { TMainNav } from '../../../types/TNavigation'
 
-const NavBar = () => {
+type TProps = {
+  navigation: TMainNav
+}
+
+const NavBar = ({ navigation }: TProps) => {
   return (
     <Popover
       as='header'
@@ -53,13 +58,13 @@ const NavBar = () => {
 
                 <ProfileDropdown />
 
-                <button className='ml-6 inline-flex items-center rounded-md bg-gradient-to-br from-aqua to-dpurple px-4 py-2 text-sm font-medium text-black hover:from-rose-900 hover:via-orange hover:to-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2'>
+                <button className='transition duration-300 ml-6 inline-flex items-center rounded-md bg-gradient-to-br from-aqua to-dpurple px-4 py-2 text-sm font-medium text-black hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2'>
                   New Game
                 </button>
               </div>
             </div>
           </div>
-          <MobileNav />
+          <MobileNav navigation={navigation} />
         </>
       )}
     </Popover>

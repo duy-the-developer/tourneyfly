@@ -43,7 +43,10 @@ const LeaderBoard = () => {
               </thead>
               <tbody className='divide-y divide-gray-800 bg-slate-900'>
                 {teams.map((each) => (
-                  <tr key={each.id} className='hover:bg-slate-800'>
+                  <tr
+                    key={each.id}
+                    className='transition hover:bg-slate-800 hover:scale-105 hover:bg-purple'
+                  >
                     <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
                       <div className='flex items-center'>
                         <div className='h-10 w-10 flex-shrink-0'>

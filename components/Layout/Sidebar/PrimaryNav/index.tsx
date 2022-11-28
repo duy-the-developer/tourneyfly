@@ -1,10 +1,16 @@
+// packages
+
+// components
 import Link from 'next/link'
+import { TMainNav } from '../../../../types/TNavigation'
 
 import classNames from '../../../../utils/classNames'
 
-import { navigation } from '../../../../data.test'
+type TProps = {
+  navigation: TMainNav
+}
 
-const PrimaryNav = () => {
+const PrimaryNav = ({ navigation }: TProps) => {
   return (
     <div className='space-y-1 pb-8'>
       {navigation.map((item) => (
@@ -15,7 +21,7 @@ const PrimaryNav = () => {
             item.current
               ? 'bg-aqua dark:bg-aqua text-slate-800'
               : 'text-aqua hover:bg-yellow hover:text-gray-600',
-            'group flex items-center px-3 py-2 text-sm font-medium rounded-md'
+            'group flex items-center px-3 py-2 text-sm font-medium rounded-md transition hover:translate-x-2'
           )}
           aria-current={item.current ? 'page' : undefined}
         >

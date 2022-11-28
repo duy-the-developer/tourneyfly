@@ -18,7 +18,12 @@ export const userNavigation = [
 ]
 export const navigation = [
   { name: 'Tournaments', href: '/', icon: TrophyIcon, current: true },
-  { name: 'Quick Match', href: '/quick-match', icon: BoltIcon, current: false },
+  {
+    name: 'Quick Match',
+    href: '/quick-match',
+    icon: BoltIcon,
+    current: false,
+  },
   { name: 'Teams', href: '/teams', icon: UserGroupIcon, current: false },
   { name: 'Players', href: 'players', icon: UsersIcon, current: false },
 ]

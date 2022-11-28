@@ -1,27 +1,25 @@
+// packages
+import {
+  TrophyIcon,
+  BoltIcon,
+  UserGroupIcon,
+  UsersIcon,
+} from '@heroicons/react/24/outline'
+
+// components
 import Aside from '../components/common/Aside'
 import ItemList from '../components/common/ItemList'
 import Section from '../components/common/Section'
 import HighlightMatch from '../components/HighlightMatch'
 import Layout from '../components/Layout'
 import TournamentCard from '../components/TournamentCard'
-
 import Headlines from '../components/Headlines'
+
+// data
 import { currentMatch, tournaments } from '../data.test'
 
+// types
 import type { TArticle } from '../types/TArticle'
-
-export async function getStaticProps() {
-  const response = await fetch(
-    'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
-  )
-  const parsedRes = await response.json()
-  const { articles } = parsedRes
-  return {
-    props: {
-      articles,
-    },
-  }
-}
 
 const Home = ({ articles }: { articles: TArticle[] }) => {
   return (
@@ -43,6 +41,19 @@ const Home = ({ articles }: { articles: TArticle[] }) => {
       </Aside>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const response = await fetch(
+    'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
+  )
+  const parsedRes = await response.json()
+  const { articles } = parsedRes
+  return {
+    props: {
+      articles,
+    },
+  }
 }
 
 export default Home
