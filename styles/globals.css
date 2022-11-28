@@ -7,8 +7,10 @@
 @layer base {
   :root {
     font-family: 'Inter', sans-serif;
-    @apply bg-fixed bg-gradient-to-bl from-dblue via-dblue to-orange text-black;
-
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    @apply overflow-scroll bg-fixed bg-gradient-to-bl from-dblue via-dblue to-orange text-black;
   }
 
   h1 {
@@ -27,5 +29,10 @@
 
   body {
     @apply h-full;
+  }
+
+  /* disable scrollbar for Chrome */
+  body::-webkit-scrollbar {
+    display: none;
   }
 }
