@@ -121,3 +121,126 @@ export const currentMatch = {
     score: 0,
   },
 }
+
+export const players = [
+  {
+    name: 'Mickey Mouse',
+    handle: 'mickeymouse',
+    href: '#',
+    imageUrl:
+      'https://fictionhorizon.com/wp-content/uploads/2022/08/Mickey-Mouse.jpg',
+  },
+  {
+    name: 'Peter Pan',
+    handle: 'peterpan',
+    href: '#',
+    imageUrl:
+      'https://fictionhorizon.com/wp-content/uploads/2022/03/120-Most-Iconic-Fictional-Characters-Of-All-Time-11.jpg',
+  },
+  {
+    name: 'Vito Corleone',
+    handle: 'thegodfather',
+    href: '#',
+    imageUrl:
+      'https://fictionhorizon.com/wp-content/uploads/2022/08/Vito-Corleone.jpg',
+  },
+  {
+    name: 'Santa Clause',
+    handle: 'papaclause',
+    href: '#',
+    imageUrl:
+      'https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/09/the-santa-clauses-poster-feature.jpg',
+  },
+]
+
+export const teams = [
+  {
+    id: 1,
+    name: '925ers',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/brazil/flag-square-250.png',
+    members: ['mickeymouse', 'peterpan'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 2,
+    name: 'Team Caffeine',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/denmark/flag-square-250.png',
+    members: ['thegodfather', 'papaclause'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 3,
+    name: 'Al Capowned',
+    imageUrl:
+      'https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-250.png',
+    members: ['mickeymouse', 'peterpan'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 4,
+    name: 'The Water Coolers',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/serbia/flag-square-250.png',
+    members: ['thegodfather', 'papaclause'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 5,
+    name: 'C-Suite Champs',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/japan/flag-square-250.png',
+    members: ['mickeymouse', 'peterpan'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 6,
+    name: 'Insert Team Name Here',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/canada/flag-square-250.png',
+    members: ['thegodfather', 'papaclause'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 7,
+    name: 'Zoom Crashers',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/germany/flag-square-250.png',
+    members: ['mickeymouse', 'peterpan'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+  {
+    id: 8,
+    name: 'HR Heros',
+    imageUrl: 'https://cdn.countryflags.com/thumbs/qatar/flag-square-250.png',
+    members: ['thegodfather', 'papaclause'],
+    totalPlayed: 2,
+    wins: 1,
+    ties: 1,
+    losses: 0,
+    totalPoints: 4,
+  },
+]

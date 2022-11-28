@@ -16,6 +16,11 @@
     font-weight: 700;
   } 
 
+  th {
+    font-family:'JetBrains Mono', monospace;
+    font-weight: 700;
+  }
+
   html {
     @apply h-full;
   }

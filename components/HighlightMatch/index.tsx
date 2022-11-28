@@ -1,4 +1,4 @@
-import TeamCard from '../TeamCard.old'
+import TeamCard from '../TeamCard'
 import Link from 'next/link'
 
 type TTeam = {
