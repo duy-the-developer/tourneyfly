@@ -2,12 +2,12 @@ import { teams } from '../../data.test'
 
 const LeaderBoard = () => {
   return (
-    <div className='flex flex-col'>
+    <div className='rounded-lg flex flex-col bg-slate-900 bg-opacity-50'>
       <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
           <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
             <table className='min-w-full divide-y divide-gray-600'>
-              <thead className='bg-slate-900'>
+              <thead className=''>
                 <tr className='text-aqua text-sm'>
                   <th
                     scope='col'
@@ -41,11 +41,11 @@ const LeaderBoard = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className='divide-y divide-gray-800 bg-slate-900'>
+              <tbody className='divide-y divide-gray-800'>
                 {teams.map((each) => (
                   <tr
                     key={each.id}
-                    className='transition hover:bg-slate-800 hover:scale-105 hover:bg-purple'
+                    className='transition hover:scale-105 hover:bg-purple cursor-pointer'
                   >
                     <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
                       <div className='flex items-center'>

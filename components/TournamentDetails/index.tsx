@@ -10,7 +10,7 @@ import classNames from '../../utils/classNames'
 const TournamentDetails = ({ tournament }: { tournament: TTournament }) => {
   const { title, status, teamNum, startDate } = tournament
   return (
-    <div className='p-2 text-gray-300 bg-slate-900 rounded-lg'>
+    <div className='p-2 text-gray-300 dark:bg-gray-900 dark:bg-opacity-50 rounded-lg'>
       <div className='px-4 py-4'>
         <div className='flex items-center justify-between'>
           <h1 className='truncate text-xl font-lg text-aqua'>{title}</h1>

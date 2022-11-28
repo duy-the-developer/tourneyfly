@@ -8,7 +8,7 @@ import { TTournament } from '../../types/TTournament'
 const TournamentCard = ({ tournament }: { tournament: TTournament }) => {
   const { id, title, startDate, status, teamNum } = tournament
   return (
-    <li className='transition hover:bg-purple hover:-translate-y-1 hover:scale-105 bg-slate-900 rounded-lg'>
+    <li className='transition hover:dark:bg-purple hover:-translate-y-1 hover:scale-105 dark:bg-slate-900 dark:bg-opacity-50 rounded-lg'>
       <Link href={`/tournament/${id}`} className='block rounded-lg'>
         <div className='px-4 py-4 sm:px-6'>
           <div className='flex items-center justify-between'>

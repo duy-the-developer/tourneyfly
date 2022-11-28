@@ -20,7 +20,7 @@ const PrimaryNav = ({ navigation }: TProps) => {
           className={classNames(
             item.current
               ? 'bg-aqua dark:bg-aqua text-slate-800'
-              : 'text-aqua hover:bg-yellow hover:text-gray-600',
+              : 'text-aqua hover:bg-yellow hover:text-gray-900',
             'group flex items-center px-3 py-2 text-sm font-medium rounded-md transition hover:translate-x-2'
           )}
           aria-current={item.current ? 'page' : undefined}

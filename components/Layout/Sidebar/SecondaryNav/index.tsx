@@ -14,7 +14,7 @@ const SecondaryNav = ({ navigation }: { navigation: TSubNav }) => {
           <a
             key={community!.name}
             href={community!.href}
-            className='group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-yellow hover:text-gray-900'
+            className='transition duration-300 group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:underline hover:bg-opacity-30 hover:bg-slate-900'
           >
             <span className='truncate'>{community!.name}</span>
           </a>

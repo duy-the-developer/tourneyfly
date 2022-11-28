@@ -4,7 +4,7 @@ import Link from 'next/link'
 import type { TArticle } from '../../types/TArticle'
 const Headlines = ({ articles }: { articles: TArticle[] }) => {
   return (
-    <ul className='bg-slate-900 rounded-lg'>
+    <ul className='bg-slate-900 bg-opacity-50 rounded-lg'>
       {articles.map((each) => {
         const { publishedAt, title, url, urlToImage } = each
 
