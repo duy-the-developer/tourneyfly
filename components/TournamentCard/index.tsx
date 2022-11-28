@@ -3,15 +3,9 @@ import React from 'react'
 import classNames from '../../utils/classNames'
 import Link from 'next/link'
 
-type TTournament = {
-  id: number
-  title: string
-  startDate: string
-  status: string
-  teamNum: number
-}
+import { TTournament } from '../../types/TTournament'
 
-const Tournament = ({ tournament }: { tournament: TTournament }) => {
+const TournamentCard = ({ tournament }: { tournament: TTournament }) => {
   const { id, title, startDate, status, teamNum } = tournament
   return (
     <li className='bg-slate-900 rounded-lg'>
@@ -59,4 +53,4 @@ const Tournament = ({ tournament }: { tournament: TTournament }) => {
   )
 }
 
-export default Tournament
+export default TournamentCard

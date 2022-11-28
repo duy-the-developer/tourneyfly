@@ -8,7 +8,7 @@ import Logo from './Logo'
 
 // utils
 import classNames from '../../../utils/classNames'
-import SearchBar from '../../common/SearchBar'
+import SearchBar from '../../SearchBar'
 
 // data
 import ProfileDropdown from './ProfileDropdown'

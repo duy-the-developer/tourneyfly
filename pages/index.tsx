@@ -1,13 +1,12 @@
-import Layout from '../components/Layout'
 import Aside from '../components/common/Aside'
 import ItemList from '../components/common/ItemList'
-import Tournament from '../components/Tournament'
-import HighlightMatch from '../components/HighlightMatch'
 import Section from '../components/common/Section'
+import HighlightMatch from '../components/HighlightMatch'
+import Layout from '../components/Layout'
+import TournamentCard from '../components/TournamentCard'
 
-import { tournaments } from '../data.test'
-import { currentMatch } from '../data.test'
 import Headlines from '../components/Headlines'
+import { currentMatch, tournaments } from '../data.test'
 
 import type { TArticle } from '../types/TArticle'
 
@@ -30,7 +29,7 @@ const Home = ({ articles }: { articles: TArticle[] }) => {
       <main className='lg:col-span-9 xl:col-span-6'>
         <ItemList>
           {tournaments.map((each) => {
-            return <Tournament tournament={each} key={each.id} />
+            return <TournamentCard tournament={each} key={each.id} />
           })}
         </ItemList>
       </main>

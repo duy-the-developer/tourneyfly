@@ -3,19 +3,28 @@ import Layout from '../../components/Layout'
 
 import LeaderBoard from '../../components/LeaderBoard'
 
-import {teams} from '../../data.test' 
+import { tournaments } from '../../data.test'
+
+import Section from '../../components/common/Section'
+import TournamentDetails from '../../components/TournamentDetails'
+import TournamentSchedule from '../../components/TournamentSchedule'
 
 const Tournament = () => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
-        <LeaderBoard/>
+        <LeaderBoard />
       </main>
       <Aside>
-        <h1 className='text-aqua'>Aside</h1>
+        <Section label='Tournament details'>
+          <TournamentDetails tournament={tournaments[0]} />
+        </Section>
+        <Section label='Tournament schedule'>
+          <TournamentSchedule />
+        </Section>
       </Aside>
     </Layout>
   )
 }
 
-export default Tournament 
+export default Tournament
