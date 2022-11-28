@@ -19,7 +19,7 @@ module.exports = {
         dblue: '#0D1042',
         cyan: '#EBFFFA',
         black: '#040303',
-        smoke: '#171212',
+        smoke: '#1F1F1F',
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],

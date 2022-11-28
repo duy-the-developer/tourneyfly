@@ -14,9 +14,9 @@ type TTournament = {
 const Tournament = ({ tournament }: { tournament: TTournament }) => {
   const { id, title, startDate, status, teamNum } = tournament
   return (
-    <li className='bg-purple rounded-lg'>
+    <li className='bg-slate-900 rounded-lg'>
       <Link
-        href={`/tournament/${tournament.id}`}
+        href={`/tournament/${id}`}
         className='block hover:bg-dpurple rounded-lg'
       >
         <div className='px-4 py-4 sm:px-6'>

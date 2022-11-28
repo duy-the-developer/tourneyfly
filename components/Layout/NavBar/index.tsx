@@ -22,7 +22,7 @@ const NavBar = () => {
       className={({ open }) =>
         classNames(
           open ? 'fixed inset-0 z-40 overflow-y-auto' : '', // add overflow-hidden to prevent double scrollbars
-          'bg-cyan dark:bg-gray-900 shadow-sm lg:static lg:overflow-y-visible'
+          'bg-cyan dark:bg-slate-900 shadow-sm lg:static lg:overflow-y-visible'
         )
       }
     >
@@ -53,12 +53,9 @@ const NavBar = () => {
 
                 <ProfileDropdown />
 
-                <Link
-                  href='#'
-                  className='ml-6 inline-flex items-center rounded-md border border-transparent bg-orange px-4 py-2 text-sm font-medium text-black shadow-sm hover:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2'
-                >
+                <button className='ml-6 inline-flex items-center rounded-md bg-gradient-to-br from-aqua to-dpurple px-4 py-2 text-sm font-medium text-black hover:from-rose-900 hover:via-orange hover:to-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2'>
                   New Game
-                </Link>
+                </button>
               </div>
             </div>
           </div>
