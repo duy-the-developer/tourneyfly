@@ -23,24 +23,6 @@ import type { ReactElement } from 'react'
 // types
 
 const Tournament = () => {
-  return (
-    <>
-      <main className='lg:col-span-9 xl:col-span-6'>
-        <LeaderBoard />
-      </main>
-      <Aside>
-        <Section label='Tournament details'>
-          <TournamentDetails tournament={tournaments[0]} />
-        </Section>
-        <Section label='Tournament schedule'>
-          <TournamentSchedule />
-        </Section>
-      </Aside>
-    </>
-  )
-}
-
-Tournament.getLayout = (page: ReactElement) => {
   const router = useRouter()
   const { tournament_id } = router.query
   const navigation = {
@@ -84,10 +66,24 @@ Tournament.getLayout = (page: ReactElement) => {
   }
 
   return (
-    <Layout>
-      <PageLayout navOptions={navigation}>{page}</PageLayout>
-    </Layout>
+    <PageLayout navOptions={navigation}>
+      <main className='lg:col-span-9 xl:col-span-6'>
+        <LeaderBoard />
+      </main>
+      <Aside>
+        <Section label='Tournament details'>
+          <TournamentDetails tournament={tournaments[0]} />
+        </Section>
+        <Section label='Tournament schedule'>
+          <TournamentSchedule />
+        </Section>
+      </Aside>
+    </PageLayout>
   )
+}
+
+Tournament.getLayout = (page: ReactElement) => {
+  return <Layout>{page}</Layout>
 }
 
 export default Tournament
