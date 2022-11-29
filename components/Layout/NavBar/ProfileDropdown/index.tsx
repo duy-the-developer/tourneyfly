@@ -12,12 +12,12 @@ import classNames from '../../../../utils/classNames'
 // data
 import { userNavigation } from '../../../../data.test'
 
-const ProfileDropdown = ({ imageUrl }: { imageUrl: string }) => {
+const ProfileDropdown = () => {
   return (
     <Menu as='div' className='relative ml-5 flex-shrink-0'>
       <div>
         <Menu.Button className='flex rounded-full bg-slate-900 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'>
-          <ProfileImage imageUrl={imageUrl} cStyle='h-8 w-8' />
+          <ProfileImage cStyle='h-8 w-8' />
         </Menu.Button>
       </div>
       <Transition

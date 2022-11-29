@@ -61,7 +61,7 @@ const NavBar = ({ navigation }: TProps) => {
                   <TrophyIcon className='h-6 w-6' aria-hidden='true' />
                 </Link>
 
-                {user && <ProfileDropdown imageUrl={user.picture!} />}
+                {user && <ProfileDropdown />}
                 {user && (
                   <Button
                     cStyle='bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
