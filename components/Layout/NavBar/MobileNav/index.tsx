@@ -62,7 +62,7 @@ const MobileNav = ({ navigation }: TProps) => {
           {userNavigation.map((item) => (
             <Link
               key={item.name}
-              href={item.href}
+              href={item.href || '#'}
               className='block rounded-md py-2 px-3 text-base font-medium text-gray-300 hover:bg-yellow hover:text-gray-900'
             >
               {item.name}

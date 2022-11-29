@@ -19,8 +19,8 @@ const PrimaryNav = ({ navigation }: TProps) => {
           href={item.href}
           className={classNames(
             item.current
-              ? 'bg-aqua dark:bg-aqua text-slate-800'
-              : 'text-aqua hover:bg-yellow hover:text-gray-900',
+              ? 'bg-aqua dark:bg-aqua text-black'
+              : 'text-aqua hover:bg-yellow hover:text-black',
             'group flex items-center px-3 py-2 text-sm font-medium rounded-md transition hover:translate-x-2'
           )}
           aria-current={item.current ? 'page' : undefined}

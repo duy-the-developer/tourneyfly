@@ -30,8 +30,6 @@ const defaultNavOptions = {
       icon: BoltIcon,
       current: false,
     },
-    { name: 'Teams', href: '/teams', icon: UserGroupIcon, current: false },
-    { name: 'Players', href: 'players', icon: UsersIcon, current: false },
   ],
   sub: [
     { name: 'Twitch', href: '#' },

@@ -2,25 +2,30 @@
 import { Popover } from '@headlessui/react'
 import { BoltIcon, TrophyIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { useUser } from '@auth0/nextjs-auth0'
 
 // components
 import Logo from './Logo'
+import Button from '../../common/Button'
+import ProfileDropdown from './ProfileDropdown'
+import MobileMenuButton from './MobileMenuButton'
+import MobileNav from './MobileNav'
 
 // utils
 import classNames from '../../../utils/classNames'
 import SearchBar from '../../SearchBar'
 
 // data
-import ProfileDropdown from './ProfileDropdown'
-import MobileMenuButton from './MobileMenuButton'
-import MobileNav from './MobileNav'
-import { TMainNav } from '../../../types/TNavigation'
 
+// types
+import { TMainNav } from '../../../types/TNavigation'
 type TProps = {
   navigation: TMainNav
 }
 
 const NavBar = ({ navigation }: TProps) => {
+  const { user } = useUser()
+
   return (
     <Popover
       as='header'
@@ -56,11 +61,25 @@ const NavBar = ({ navigation }: TProps) => {
                   <TrophyIcon className='h-6 w-6' aria-hidden='true' />
                 </Link>
 
-                <ProfileDropdown />
+                {user && <ProfileDropdown imageUrl={user.picture!} />}
+                {user && (
+                  <Button
+                    cStyle='bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
+                    label='New Game'
+                    onClickFunc={() => {
+                      console.log('New Game')
+                    }}
+                  />
+                )}
 
-                <button className='transition duration-300 ml-6 inline-flex items-center rounded-md bg-gradient-to-br from-aqua to-dpurple px-4 py-2 text-sm font-medium text-black hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2'>
-                  New Game
-                </button>
+                {!user && (
+                  <Link
+                    href='/api/auth/login'
+                    className='ml-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-medium text-black  focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
+                  >
+                    Sign In
+                  </Link>
+                )}
               </div>
             </div>
           </div>

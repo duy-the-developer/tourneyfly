@@ -1,16 +1,26 @@
 import React from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
 
-import { user } from '../../../data.test'
+// import { user } from '../../../data.test'
 
-const ProfileImage = ({ cStyle }: { cStyle: string }) => {
+type TProps = { cStyle: string }
+
+const ProfileImage = ({ cStyle }: TProps) => {
+  const { user } = useUser()
+  console.log(user)
+
   return (
     <picture>
-      <source srcSet={user.imageUrl} />
-      <img
-        className={`${cStyle} rounded-full`}
-        src={user.imageUrl}
-        alt='profile image'
-      />
+      {user && (
+        <>
+          <source srcSet={user.picture!} />
+          <img
+            className={`${cStyle} rounded-full`}
+            src={user.picture!}
+            alt='profile image'
+          />
+        </>
+      )}
     </picture>
   )
 }

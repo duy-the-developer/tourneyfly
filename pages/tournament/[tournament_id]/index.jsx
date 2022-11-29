@@ -1,4 +1,5 @@
 // packages
+import { useRouter } from 'next/router'
 import {
   ChartBarIcon,
   TableCellsIcon,
@@ -7,28 +8,47 @@ import {
 } from '@heroicons/react/24/outline'
 
 // components
-import Aside from '../../components/common/Aside'
-import Layout from '../../components/Layout'
-import LeaderBoard from '../../components/LeaderBoard'
-import Section from '../../components/common/Section'
-import TournamentDetails from '../../components/TournamentDetails'
-import TournamentSchedule from '../../components/TournamentSchedule'
+import Aside from '../../../components/common/Aside'
+import Layout from '../../../components/Layout'
+import LeaderBoard from '../../../components/LeaderBoard'
+import Section from '../../../components/common/Section'
+import TournamentDetails from '../../../components/TournamentDetails'
+import TournamentSchedule from '../../../components/TournamentSchedule'
 
 // data
-import { tournaments } from '../../data.test'
+import { tournaments } from '../../../data.test'
 
 const Tournament = () => {
+  const router = useRouter()
+  const { tournament_id } = router.query
+
   const navigation = {
     main: [
-      { name: 'Leaderboard', href: '/', icon: ChartBarIcon, current: true },
+      {
+        name: 'Leaderboard',
+        href: `/tournament/${tournament_id}`,
+        icon: ChartBarIcon,
+        current: true,
+        type: 'button',
+      },
       {
         name: 'Results',
-        href: '/quick-match',
+        href: `/tournament/${tournament_id}/results`,
         icon: TableCellsIcon,
         current: false,
       },
-      { name: 'Teams', href: '/teams', icon: UserGroupIcon, current: false },
-      { name: 'Players', href: 'players', icon: UsersIcon, current: false },
+      {
+        name: 'Teams',
+        href: `/tournament/${tournament_id}/teams`,
+        icon: UserGroupIcon,
+        current: false,
+      },
+      {
+        name: 'Players',
+        href: `/tournament/${tournament_id}/teams`,
+        icon: UsersIcon,
+        current: false,
+      },
     ],
     sub: [
       { name: 'Movies', href: '#' },

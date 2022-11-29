@@ -14,7 +14,10 @@ export const user = {
 export const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  {
+    name: 'Sign out',
+    href: '/api/auth/logout',
+  },
 ]
 export const navigation = [
   { name: 'Tournaments', href: '/', icon: TrophyIcon, current: true },
@@ -93,7 +96,7 @@ export const tournaments = [
     id: 1,
     title: 'LOSERS DO DISHES',
     startDate: '2022-10-27',
-    status: 'On-going',
+    status: 'In progress',
     teamNum: 6,
   },
   {

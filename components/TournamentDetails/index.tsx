@@ -18,7 +18,7 @@ const TournamentDetails = ({ tournament }: { tournament: TTournament }) => {
             <p
               className={classNames(
                 status === 'Completed' && 'bg-orange',
-                status === 'On-going' && 'bg-green',
+                status === 'In progress' && 'bg-green',
                 status === 'Upcoming' && 'bg-yellow',
                 'inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-slate-800'
               )}
