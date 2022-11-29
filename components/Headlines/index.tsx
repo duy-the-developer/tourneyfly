@@ -12,7 +12,7 @@ const Headlines = ({ articles }: { articles: TArticle[] }) => {
           <li key={url}>
             <Link
               href={url}
-              className='flex items-center space-x-6 px-4 py-4 cursor-pointer hover:bg-gray-800 rounded-lg group'
+              className='transition flex items-center space-x-6 px-4 py-4 cursor-pointer hover:bg-purple hover:-translate-y-1 rounded-lg group'
               target='_blank'
             >
               <img

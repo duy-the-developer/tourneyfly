@@ -28,8 +28,8 @@ const PrimaryNav = ({ navigation }: TProps) => {
           <item.icon
             className={classNames(
               item.current
-                ? 'text-slate-800'
-                : 'text-aqua group-hover:text-gray-600',
+                ? 'text-slate-900'
+                : 'text-aqua group-hover:text-black',
               'flex-shrink-0 -ml-1 mr-3 h-6 w-6'
             )}
             aria-hidden='true'

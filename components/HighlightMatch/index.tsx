@@ -17,7 +17,7 @@ type TMatch = {
 const HighlightMatch = ({ match }: { match: TMatch }) => {
   const { id, teamA, teamB } = match
   return (
-    <div className='dark:bg-slate-900 dark:bg-opacity-50 rounded-lg shadow p-4 dark:hover:bg-slate-800'>
+    <div className='transition dark:bg-slate-900 dark:bg-opacity-50 rounded-lg shadow p-4 dark:hover:bg-purple hover:-translate-y-1'>
       <p className='bg-green inline-flex rounded-full px-2 text-xs font-semibold leading-5 text-slate-800'>
         LIVE
       </p>
