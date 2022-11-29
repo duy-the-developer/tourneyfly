@@ -73,12 +73,12 @@ const NavBar = ({ navigation }: TProps) => {
                 )}
 
                 {!user && (
-                  <Link
+                  <a
                     href='/api/auth/login'
                     className='ml-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-medium text-black  focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
                   >
                     Sign In
-                  </Link>
+                  </a>
                 )}
               </div>
             </div>

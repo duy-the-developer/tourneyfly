@@ -32,17 +32,23 @@ const ProfileDropdown = () => {
         <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-purple py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           {userNavigation.map((item) => (
             <Menu.Item key={item.name}>
-              {({ active }) => (
-                <Link
-                  href={item.href || '#'}
-                  className={classNames(
-                    active ? 'bg-yellow text-gray-700' : '',
-                    'block py-2 px-4 text-sm text-aqua'
-                  )}
-                >
-                  {item.name}
-                </Link>
-              )}
+              {({ active }) => {
+                return (
+                  <div
+                    className={classNames(
+                      active ? 'bg-yellow text-gray-700' : '',
+                      'block py-2 px-4 text-sm text-aqua cursor-pointer'
+                    )}
+                  >
+                    {item.href.includes('/api') && (
+                      <a href={item.href}>{item.name}</a>
+                    )}
+                    {!item.href.includes('/api') && (
+                      <Link href={item.href}>{item.name}</Link>
+                    )}
+                  </div>
+                )
+              }}
             </Menu.Item>
           ))}
         </Menu.Items>

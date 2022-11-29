@@ -1,4 +1,5 @@
 // packages
+import PocketBase from 'pocketbase'
 import {
   TrophyIcon,
   BoltIcon,
@@ -16,12 +17,15 @@ import TournamentCard from '../components/TournamentCard'
 import Headlines from '../components/Headlines'
 
 // data
-import { currentMatch, tournaments } from '../data.test'
+import { currentMatch } from '../data.test'
 
 // types
 import type { TArticle } from '../types/TArticle'
+import { TTournament } from '../types/TTournament'
 
-const Home = ({ articles }: { articles: TArticle[] }) => {
+type TProps = { articles: TArticle[]; tournaments: TTournament[] }
+
+const Home = ({ articles, tournaments }: TProps) => {
   return (
     <Layout>
       <main className='lg:col-span-9 xl:col-span-6'>
@@ -44,14 +48,23 @@ const Home = ({ articles }: { articles: TArticle[] }) => {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(
+  const articleRes = await fetch(
     'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
-  )
-  const parsedRes = await response.json()
-  const { articles } = parsedRes
+  ).then((res) => res.json())
+
+  const pb = 'http://127.0.0.1:8090'
+
+  const tournamentList = await fetch(
+    `${pb}/api/collections/tournaments/records`
+  ).then((res) => res.json())
+
+  const { articles } = articleRes
+  const { items: tournaments } = tournamentList
+
   return {
     props: {
       articles,
+      tournaments,
     },
   }
 }
