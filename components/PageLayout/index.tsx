@@ -1,21 +1,17 @@
-// packages
 import { TrophyIcon, BoltIcon } from '@heroicons/react/24/outline'
-
-// components
-import NavBar from './NavBar'
-
-// types
-import type { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { TMainNav, TSubNav } from '../../types/TNavigation'
+import Sidebar from '../common/Sidebar'
+
 type TProps = {
+  children: ReactNode
   navOptions?: {
     main: TMainNav
     sub: TSubNav
   }
-  children: ReactNode
 }
 
-const navigation = {
+const defaultNavOptions = {
   main: [
     { name: 'Tournaments', href: '/', icon: TrophyIcon, current: true },
     {
@@ -34,17 +30,15 @@ const navigation = {
   ],
 }
 
-const Layout = ({ navOptions = navigation, children }: TProps) => {
+const PageLayout = ({ children, navOptions = defaultNavOptions }: TProps) => {
   return (
-    <div className='dark min-h-full'>
-      <NavBar navigation={navOptions.main} />
-      <div className='py-10'>
-        <div className='mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8'>
-          {children}
-        </div>
+    <>
+      <div className='hidden lg:col-span-3 lg:block xl:col-span-2'>
+        <Sidebar navOptions={navOptions} />
       </div>
-    </div>
+      {children}
+    </>
   )
 }
 
-export default Layout
+export default PageLayout

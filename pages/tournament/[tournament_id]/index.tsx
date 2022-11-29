@@ -14,14 +14,35 @@ import LeaderBoard from '../../../components/LeaderBoard'
 import Section from '../../../components/common/Section'
 import TournamentDetails from '../../../components/TournamentDetails'
 import TournamentSchedule from '../../../components/TournamentSchedule'
+import PageLayout from '../../../components/PageLayout'
 
 // data
 import { tournaments } from '../../../data.test'
+import type { ReactElement } from 'react'
+
+// types
 
 const Tournament = () => {
+  return (
+    <>
+      <main className='lg:col-span-9 xl:col-span-6'>
+        <LeaderBoard />
+      </main>
+      <Aside>
+        <Section label='Tournament details'>
+          <TournamentDetails tournament={tournaments[0]} />
+        </Section>
+        <Section label='Tournament schedule'>
+          <TournamentSchedule />
+        </Section>
+      </Aside>
+    </>
+  )
+}
+
+Tournament.getLayout = (page: ReactElement) => {
   const router = useRouter()
   const { tournament_id } = router.query
-
   const navigation = {
     main: [
       {
@@ -63,18 +84,8 @@ const Tournament = () => {
   }
 
   return (
-    <Layout navOptions={navigation}>
-      <main className='lg:col-span-9 xl:col-span-6'>
-        <LeaderBoard />
-      </main>
-      <Aside>
-        <Section label='Tournament details'>
-          <TournamentDetails tournament={tournaments[0]} />
-        </Section>
-        <Section label='Tournament schedule'>
-          <TournamentSchedule />
-        </Section>
-      </Aside>
+    <Layout>
+      <PageLayout navOptions={navigation}>{page}</PageLayout>
     </Layout>
   )
 }

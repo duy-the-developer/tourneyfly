@@ -15,12 +15,14 @@ import { currentMatch, tournaments } from '../data.test'
 // types
 import type { TArticle } from '../types/TArticle'
 import { TTournament } from '../types/TTournament'
+import type { ReactElement } from 'react'
+import PageLayout from '../components/PageLayout'
 
 type TProps = { articles: TArticle[] }
 
 const Home = ({ articles }: TProps) => {
   return (
-    <Layout>
+    <>
       <main className='lg:col-span-9 xl:col-span-6'>
         <ItemList>
           {tournaments.map((each) => {
@@ -36,6 +38,14 @@ const Home = ({ articles }: TProps) => {
           <Headlines articles={articles} />
         </Section>
       </Aside>
+    </>
+  )
+}
+
+Home.getLayout = (page: ReactElement) => {
+  return (
+    <Layout>
+      <PageLayout>{page}</PageLayout>
     </Layout>
   )
 }
