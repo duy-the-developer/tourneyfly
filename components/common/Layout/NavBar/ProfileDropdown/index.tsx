@@ -41,7 +41,9 @@ const ProfileDropdown = () => {
                     )}
                   >
                     {item.href.includes('/api') && (
-                      <a href={item.href}>{item.name}</a>
+                      <a className='min-w-full min-h-full' href={item.href}>
+                        {item.name}
+                      </a>
                     )}
                     {!item.href.includes('/api') && (
                       <Link href={item.href}>{item.name}</Link>

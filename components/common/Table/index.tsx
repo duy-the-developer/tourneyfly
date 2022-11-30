@@ -18,8 +18,16 @@ type TProps = {
 }
 
 const Table = ({ columnData, rowData }: TProps) => {
-  const columns = useMemo(() => columnData, [])
-  const data = useMemo(() => rowData, [])
+  const columns = useMemo(
+    () => columnData,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+  const data = useMemo(
+    () => rowData,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   const tableInstance = useTable({
     // @ts-ignore
@@ -37,13 +45,17 @@ const Table = ({ columnData, rowData }: TProps) => {
         {...getTableProps()}
       >
         <thead>
-          {headerGroups.map((headerGroup) => (
+          {headerGroups.map((headerGroup, i) => (
             <tr
+              // @ts-ignore //! next build throw error even when react-table provide key by default. Adding key prop and ts screams at me.
+              key={`tr-${i}`}
               className='text-aqua text-sm'
               {...headerGroup.getHeaderGroupProps()}
             >
               {headerGroup.headers.map((col, i) => (
                 <th
+                  // @ts-ignore
+                  key={`th-${i}`}
                   scope='col'
                   className={`${classNames(
                     i === 0 ? 'text-left' : 'text-center'
@@ -61,11 +73,15 @@ const Table = ({ columnData, rowData }: TProps) => {
             prepareRow(row)
             return (
               <tr
+                // @ts-ignore
+                key={`tr-${i}`}
                 className={`transition ease-out hover:scale-[102%] hover:bg-purple cursor-pointer`}
                 {...row.getRowProps()}
               >
                 {row.cells.map((cell, i) => (
                   <td
+                    // @ts-ignore
+                    key={`td-${i}`}
                     className={`${classNames(
                       i === 0 ? 'text-left' : 'text-center'
                     )} whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-200`}
