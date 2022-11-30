@@ -14,7 +14,6 @@ import { currentMatch, tournaments } from '../data.test'
 
 // types
 import type { TArticle } from '../types/TArticle'
-import { TTournament } from '../types/TTournament'
 import type { ReactElement } from 'react'
 import PageLayout from '../components/PageLayout'
 
@@ -52,7 +51,7 @@ Home.getLayout = (page: ReactElement) => {
 
 export async function getStaticProps() {
   const articleRes = await fetch(
-    'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
+    `https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=${process.env.NEWSAPI_KEY}`
   ).then((res) => res.json())
 
   const { articles } = articleRes
