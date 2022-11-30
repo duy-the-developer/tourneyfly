@@ -6,19 +6,19 @@ import { useUser } from '@auth0/nextjs-auth0'
 
 // components
 import Logo from './Logo'
-import Button from '../../common/Button'
+import { Button } from '../../../common'
 import ProfileDropdown from './ProfileDropdown'
 import MobileMenuButton from './MobileMenuButton'
 import MobileNav from './MobileNav'
+import SearchBar from './SearchBar'
 
 // utils
-import classNames from '../../../utils/classNames'
-import SearchBar from '../../SearchBar'
+import classNames from '../../../../utils/classNames'
 
 // data
 
 // types
-import { TMainNav } from '../../../types/TNavigation'
+import { TMainNav } from '../../../../types/TNavigation'
 type TProps = {
   navigation: TMainNav
 }

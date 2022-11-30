@@ -1,7 +1,7 @@
 import { TrophyIcon, BoltIcon } from '@heroicons/react/24/outline'
 import React, { ReactNode } from 'react'
-import { TMainNav, TSubNav } from '../../types/TNavigation'
-import Sidebar from '../common/Sidebar'
+import { TMainNav, TSubNav } from '../../../types/TNavigation'
+import Sidebar from '../Sidebar'
 
 type TProps = {
   children: ReactNode

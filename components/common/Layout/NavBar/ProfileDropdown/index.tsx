@@ -4,13 +4,13 @@ import { Menu, Transition } from '@headlessui/react'
 import Link from 'next/link'
 
 // components
-import ProfileImage from '../../../common/ProfileImage'
+import { ProfileImage } from '../../../../common'
 
 // utils
-import classNames from '../../../../utils/classNames'
+import classNames from '../../../../../utils/classNames'
 
 // data
-import { userNavigation } from '../../../../data.test'
+import { userNavigation } from '../../../../../data.test'
 
 const ProfileDropdown = () => {
   return (

@@ -8,13 +8,12 @@ import {
 } from '@heroicons/react/24/outline'
 
 // components
-import Aside from '../../../components/common/Aside'
-import Layout from '../../../components/Layout'
+import { Aside, Section, Layout } from '../../../components/common'
+
 import LeaderBoard from '../../../components/LeaderBoard'
-import Section from '../../../components/common/Section'
 import TournamentDetails from '../../../components/TournamentDetails'
 import TournamentSchedule from '../../../components/TournamentSchedule'
-import PageLayout from '../../../components/PageLayout'
+import PageLayout from '../../../components/common/PageLayout'
 
 // data
 import { tournaments } from '../../../data.test'

@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { BellIcon } from '@heroicons/react/24/outline'
 
 // utils
-import classNames from '../../../../utils/classNames'
+import classNames from '../../../../../utils/classNames'
 
 // data
-import { user, userNavigation, navigation } from '../../../../data.test'
-import ProfileImage from '../../../common/ProfileImage'
-import { TMainNav } from '../../../../types/TNavigation'
+import { ProfileImage } from '../../../../common'
+import { user, userNavigation, navigation } from '../../../../../data.test'
+import { TMainNav } from '../../../../../types/TNavigation'
 
 type TProps = {
   navigation: TMainNav

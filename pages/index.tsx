@@ -1,13 +1,14 @@
 // packages
 
 // components
+import { Layout } from '../components/common'
 import Aside from '../components/common/Aside'
 import ItemList from '../components/common/ItemList'
 import Section from '../components/common/Section'
 import HighlightMatch from '../components/HighlightMatch'
-import Layout from '../components/Layout'
 import TournamentCard from '../components/TournamentCard'
 import Headlines from '../components/Headlines'
+import PageLayout from '../components/common/PageLayout'
 
 // data
 import { currentMatch, tournaments } from '../data.test'
@@ -15,7 +16,6 @@ import { currentMatch, tournaments } from '../data.test'
 // types
 import type { TArticle } from '../types/TArticle'
 import type { ReactElement } from 'react'
-import PageLayout from '../components/PageLayout'
 
 type TProps = { articles: TArticle[] }
 
