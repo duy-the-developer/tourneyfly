@@ -23,14 +23,6 @@
     font-weight: 700;
   }
 
-  html {
-    @apply h-full;
-  }
-
-  body {
-    @apply h-full;
-  }
-
   /* disable scrollbar for Chrome */
   body::-webkit-scrollbar {
     display: none;

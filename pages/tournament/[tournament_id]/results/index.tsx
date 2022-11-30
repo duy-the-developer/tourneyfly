@@ -59,7 +59,7 @@ const TournamentResults = () => {
 
   return (
     <PageLayout navOptions={navigation}>
-      <main className='lg:col-span-9 xl:col-span-9'>
+      <main className='lg:col-span-9 xl:col-span-10'>
         <ScoreBoard />
       </main>
     </PageLayout>

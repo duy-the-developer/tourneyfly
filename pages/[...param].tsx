@@ -1,7 +1,11 @@
-import Layout from '../components/Layout'
-import Container from '../components/common/Container'
-import Aside from '../components/common/Aside'
-import Section from '../components/common/Section'
+import { ReactElement } from 'react'
+import {
+  Layout,
+  Container,
+  Aside,
+  Section,
+  PageLayout,
+} from '../components/common'
 import HighlightMatch from '../components/HighlightMatch'
 import Headlines from '../components/Headlines'
 
@@ -25,7 +29,7 @@ import { TArticle } from '../types/TArticle'
 
 const NotFound = ({ articles }: { articles: TArticle[] }) => {
   return (
-    <Layout>
+    <>
       <main className='lg:col-span-9 xl:col-span-6'>
         <Container cStyle='bg-purple'>
           <h1 className='px-4 py-6 text-2xl text-orange'>
@@ -41,6 +45,14 @@ const NotFound = ({ articles }: { articles: TArticle[] }) => {
           {/* <Headlines articles={articles} /> */}
         </Section>
       </Aside>
+    </>
+  )
+}
+
+NotFound.getLayout = (page: ReactElement) => {
+  return (
+    <Layout>
+      <PageLayout>{page}</PageLayout>
     </Layout>
   )
 }

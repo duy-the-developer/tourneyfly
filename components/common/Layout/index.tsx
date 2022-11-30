@@ -6,7 +6,7 @@ import NavBar from './NavBar'
 
 // types
 import type { ReactNode } from 'react'
-import { TMainNav, TSubNav } from '../../types/TNavigation'
+import { TMainNav, TSubNav } from '../../../types/TNavigation'
 type TProps = {
   navOptions?: {
     main: TMainNav

@@ -333,7 +333,7 @@ export const teams = [
   },
   {
     id: 'h',
-    name: 'HR Heros',
+    name: 'HR Heroes',
     imageUrl: 'https://cdn.countryflags.com/thumbs/qatar/flag-square-250.png',
     members: ['thegodfather', 'papaclause'],
     totalPlayed: 2,
