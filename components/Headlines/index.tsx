@@ -20,6 +20,7 @@ const Headlines = ({ articles }: { articles: TArticle[] }) => {
                 alt={title}
                 className='truncate h-20 w-20 flex-none rounded-md bg-gray-100 object-cover object-center'
               />
+
               <div className='flex-col space-y-1'>
                 <p className='text-gray-200 line-clamp-2'>{title}</p>
                 <p className='text-sm flex-none font-medium text-gray-400'>

@@ -49,7 +49,7 @@ const Table = ({ columnData, rowData }: TProps) => {
             <tr
               // @ts-ignore //! next build throw error even when react-table provide key by default. Adding key prop and ts screams at me.
               key={`tr-${i}`}
-              className='text-aqua text-sm'
+              className='text-aqua text-sm leading-8'
               {...headerGroup.getHeaderGroupProps()}
             >
               {headerGroup.headers.map((col, i) => (
@@ -59,7 +59,7 @@ const Table = ({ columnData, rowData }: TProps) => {
                   scope='col'
                   className={`${classNames(
                     i === 0 ? 'text-left' : 'text-center'
-                  )} py-3.5 pl-4 pr-3 font-semibold`}
+                  )} py-3.5 pl-4 pr-3 font-semibold h-8`}
                   {...col.getHeaderProps()}
                 >
                   {col.render('Header')}

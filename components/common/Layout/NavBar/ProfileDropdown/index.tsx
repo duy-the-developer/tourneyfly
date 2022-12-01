@@ -29,7 +29,7 @@ const ProfileDropdown = () => {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-aqua py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-purple py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           {userNavigation.map((item) => (
             <Menu.Item key={item.name}>
               {({ active }) => {
@@ -40,7 +40,7 @@ const ProfileDropdown = () => {
                       <a
                         href={item.href}
                         className={
-                          'transition block py-2 px-4 text-sm text-slate-900 cursor-pointer items-stretch hover:bg-yellow'
+                          'transition block py-2 px-4 text-sm text-aqua cursor-pointer items-stretch hover:bg-aqua hover:text-slate-900'
                         }
                       >
                         {item.name}
@@ -50,7 +50,7 @@ const ProfileDropdown = () => {
                       <Link
                         href={item.href}
                         className={
-                          'transition block py-2 px-4 text-sm text-slate-900 cursor-pointer items-stretch hover:bg-yellow'
+                          'transition block py-2 px-4 text-sm text-aqua cursor-pointer items-stretch hover:bg-aqua hover:text-slate-900'
                         }
                       >
                         {item.name}
