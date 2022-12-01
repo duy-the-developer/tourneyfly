@@ -29,26 +29,34 @@ const ProfileDropdown = () => {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-purple py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-aqua py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           {userNavigation.map((item) => (
             <Menu.Item key={item.name}>
               {({ active }) => {
+                const isExternalLink = item.href.includes('/api')
                 return (
-                  <div
-                    className={classNames(
-                      active ? 'bg-yellow text-gray-700' : '',
-                      'block py-2 px-4 text-sm text-aqua cursor-pointer'
-                    )}
-                  >
-                    {item.href.includes('/api') && (
-                      <a className='min-w-full min-h-full' href={item.href}>
+                  <>
+                    {isExternalLink && (
+                      <a
+                        href={item.href}
+                        className={
+                          'transition block py-2 px-4 text-sm text-slate-900 cursor-pointer items-stretch hover:bg-yellow'
+                        }
+                      >
                         {item.name}
                       </a>
                     )}
-                    {!item.href.includes('/api') && (
-                      <Link href={item.href}>{item.name}</Link>
+                    {!isExternalLink && (
+                      <Link
+                        href={item.href}
+                        className={
+                          'transition block py-2 px-4 text-sm text-slate-900 cursor-pointer items-stretch hover:bg-yellow'
+                        }
+                      >
+                        {item.name}
+                      </Link>
                     )}
-                  </div>
+                  </>
                 )
               }}
             </Menu.Item>
