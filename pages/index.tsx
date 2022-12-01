@@ -16,8 +16,9 @@ import { currentMatch, tournaments } from '../data.test'
 // types
 import type { TArticle } from '../types/TArticle'
 import type { ReactElement } from 'react'
+import { HomeLayout } from '../components/HomeLayout'
 
-type TProps = { articles: TArticle[] }
+export type TProps = { articles: TArticle[] }
 
 const Home = ({ articles }: TProps) => {
   return (
@@ -44,7 +45,7 @@ const Home = ({ articles }: TProps) => {
 Home.getLayout = (page: ReactElement) => {
   return (
     <Layout>
-      <PageLayout>{page}</PageLayout>
+      <HomeLayout>{page}</HomeLayout>
     </Layout>
   )
 }

@@ -18,7 +18,7 @@ const Headlines = ({ articles }: { articles: TArticle[] }) => {
               <img
                 src={urlToImage}
                 alt={title}
-                className='truncate h-20 w-20 flex-none rounded-md bg-gray-100 object-cover object-center'
+                className='truncate h-20 w-20 flex-none rounded-md object-cover object-center'
               />
 
               <div className='flex-col space-y-1'>

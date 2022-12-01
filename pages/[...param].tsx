@@ -7,27 +7,11 @@ import {
   PageLayout,
 } from '../components/common'
 import HighlightMatch from '../components/HighlightMatch'
-import Headlines from '../components/Headlines'
+import { HomeLayout } from '../components/HomeLayout'
 
 import { currentMatch } from '../data.test'
-import { TArticle } from '../types/TArticle'
 
-// export async function getStaticProps() {
-//   const response = await fetch(
-//     'https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=f6b58af0a5124be2bf14ae6aaad10d6d'
-//   )
-//   const parsedRes = await response.json()
-//   const { articles } = parsedRes
-//   return {
-//     props: {
-//       articles,
-//     },
-//   }
-// }
-
-//TODO: Add getStaticPaths
-
-const NotFound = ({ articles }: { articles: TArticle[] }) => {
+const NotFound = () => {
   return (
     <>
       <main className='lg:col-span-9 xl:col-span-6'>
@@ -41,9 +25,6 @@ const NotFound = ({ articles }: { articles: TArticle[] }) => {
         <Section label='highlight'>
           <HighlightMatch match={currentMatch} />
         </Section>
-        <Section label='Top sports headlines from United Kingdom'>
-          {/* <Headlines articles={articles} /> */}
-        </Section>
       </Aside>
     </>
   )
@@ -52,7 +33,7 @@ const NotFound = ({ articles }: { articles: TArticle[] }) => {
 NotFound.getLayout = (page: ReactElement) => {
   return (
     <Layout>
-      <PageLayout>{page}</PageLayout>
+      <HomeLayout>{page}</HomeLayout>
     </Layout>
   )
 }

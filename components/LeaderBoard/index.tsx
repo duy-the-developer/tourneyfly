@@ -18,10 +18,10 @@ const LeaderBoard = () => {
     ({ name, imageUrl, members, wins, losses, ties, totalPoints }) => {
       return {
         name: <NameCell name={name} imageUrl={imageUrl} members={members} />,
-        wins: <div className='text-gray-400'>{wins}</div>,
-        losses: <div className='text-gray-400'>{losses}</div>,
-        ties: <div className='text-gray-400'>{ties}</div>,
-        totalPoints: <div className='text-gray-200'>{totalPoints}</div>,
+        wins,
+        losses,
+        ties,
+        totalPoints,
       }
     }
   )

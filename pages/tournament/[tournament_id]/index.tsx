@@ -1,12 +1,3 @@
-// packages
-import { useRouter } from 'next/router'
-import {
-  ChartBarIcon,
-  TableCellsIcon,
-  UserGroupIcon,
-  UsersIcon,
-} from '@heroicons/react/24/outline'
-
 // components
 import { Aside, Section, Layout } from '../../../components/common'
 
@@ -18,54 +9,13 @@ import PageLayout from '../../../components/common/PageLayout'
 // data
 import { tournaments } from '../../../data.test'
 import type { ReactElement } from 'react'
+import { TournamentLayout } from '../../../components/TournamentLayout'
 
 // types
 
 const Tournament = () => {
-  const router = useRouter()
-  const { tournament_id } = router.query
-  const navigation = {
-    main: [
-      {
-        name: 'Leaderboard',
-        href: `/tournament/${tournament_id}`,
-        icon: ChartBarIcon,
-        current: true,
-        type: 'button',
-      },
-      {
-        name: 'Results',
-        href: `/tournament/${tournament_id}/results`,
-        icon: TableCellsIcon,
-        current: false,
-      },
-      {
-        name: 'Teams',
-        href: `/tournament/${tournament_id}/teams`,
-        icon: UserGroupIcon,
-        current: false,
-      },
-      {
-        name: 'Players',
-        href: `/tournament/${tournament_id}/teams`,
-        icon: UsersIcon,
-        current: false,
-      },
-    ],
-    sub: [
-      { name: 'Movies', href: '#' },
-      { name: 'Food', href: '#' },
-      { name: 'Sports', href: '#' },
-      { name: 'Animals', href: '#' },
-      { name: 'Science', href: '#' },
-      { name: 'Dinosaurs', href: '#' },
-      { name: 'Talents', href: '#' },
-      { name: 'Gaming', href: '#' },
-    ],
-  }
-
   return (
-    <PageLayout navOptions={navigation}>
+    <>
       <main className='lg:col-span-9 xl:col-span-6'>
         <LeaderBoard />
       </main>
@@ -77,12 +27,16 @@ const Tournament = () => {
           <TournamentSchedule />
         </Section>
       </Aside>
-    </PageLayout>
+    </>
   )
 }
 
 Tournament.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+  return (
+    <Layout>
+      <TournamentLayout>{page}</TournamentLayout>
+    </Layout>
+  )
 }
 
 export default Tournament

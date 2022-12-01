@@ -1,5 +1,10 @@
+import {
+  ChevronUpDownIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from '@heroicons/react/24/outline'
 import { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import classNames from '../../../utils/classNames'
 import { TableContainer } from './TableContainer'
 
@@ -29,14 +34,24 @@ const Table = ({ columnData, rowData }: TProps) => {
     []
   )
 
-  const tableInstance = useTable({
-    // @ts-ignore
-    columns,
-    data,
-  })
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance
+    useTable(
+      {
+        // @ts-ignore
+        columns,
+        data,
+        initialState: {
+          // @ts-ignore
+          sortBy: [
+            {
+              id: 'totalPoints',
+              desc: true,
+            },
+          ],
+        },
+      },
+      useSortBy
+    )
 
   return (
     <TableContainer>
@@ -60,9 +75,25 @@ const Table = ({ columnData, rowData }: TProps) => {
                   className={`${classNames(
                     i === 0 ? 'text-left' : 'text-center'
                   )} py-3.5 pl-4 pr-3 font-semibold h-8`}
-                  {...col.getHeaderProps()}
+                  {...col.getHeaderProps(col.getSortByToggleProps())}
                 >
-                  {col.render('Header')}
+                  <div
+                    className={classNames(
+                      i === 0 ? 'justify-start' : 'justify-center',
+                      'flex items-center'
+                    )}
+                  >
+                    {col.render('Header')}
+                    {col.isSorted ? (
+                      col.isSortedDesc ? (
+                        <ChevronDownIcon className='w-5 h-5' />
+                      ) : (
+                        <ChevronUpIcon className='w-5 h-5' />
+                      )
+                    ) : (
+                      <ChevronUpDownIcon className='w-5 h-5' />
+                    )}
+                  </div>
                 </th>
               ))}
             </tr>
