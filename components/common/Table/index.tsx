@@ -75,6 +75,7 @@ const Table = ({ columnData, rowData }: TProps) => {
                   className={`${classNames(
                     i === 0 ? 'text-left' : 'text-center'
                   )} py-3.5 pl-4 pr-3 font-semibold h-8`}
+                  // @ts-ignore
                   {...col.getHeaderProps(col.getSortByToggleProps())}
                 >
                   <div
