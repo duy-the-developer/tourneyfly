@@ -85,15 +85,19 @@ const Table = ({ columnData, rowData }: TProps) => {
                     )}
                   >
                     {col.render('Header')}
-                    {col.isSorted ? (
-                      col.isSortedDesc ? (
-                        <ChevronDownIcon className='w-5 h-5' />
+                    {
+                      // @ts-ignore
+                      col.isSorted ? (
+                        // @ts-ignore
+                        col.isSortedDesc ? (
+                          <ChevronDownIcon className='w-5 h-5' />
+                        ) : (
+                          <ChevronUpIcon className='w-5 h-5' />
+                        )
                       ) : (
-                        <ChevronUpIcon className='w-5 h-5' />
+                        <ChevronUpDownIcon className='w-5 h-5' />
                       )
-                    ) : (
-                      <ChevronUpDownIcon className='w-5 h-5' />
-                    )}
+                    }
                   </div>
                 </th>
               ))}
