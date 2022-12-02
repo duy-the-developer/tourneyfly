@@ -26,7 +26,14 @@ const LeaderBoard = () => {
     }
   )
 
-  return <Table columnData={columnsData} rowData={rowsData} />
+  return (
+    <Table
+      columnData={columnsData}
+      rowData={rowsData}
+      sortById={'totalPoints'}
+      descending={true}
+    />
+  )
 }
 
 export default LeaderBoard

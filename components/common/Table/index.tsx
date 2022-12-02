@@ -1,8 +1,4 @@
-import {
-  ChevronUpDownIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from '@heroicons/react/24/outline'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
 import { useMemo } from 'react'
 import { useTable, useSortBy } from 'react-table'
 import classNames from '../../../utils/classNames'
@@ -20,9 +16,11 @@ type TRow = {
 type TProps = {
   columnData: THeader[]
   rowData: TRow[]
+  sortById?: string
+  descending?: boolean
 }
 
-const Table = ({ columnData, rowData }: TProps) => {
+const Table = ({ columnData, rowData, sortById, descending }: TProps) => {
   const columns = useMemo(
     () => columnData,
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,6 +31,9 @@ const Table = ({ columnData, rowData }: TProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
+  const initialState = sortById
+    ? { sortBy: [{ id: sortById, desc: descending }] }
+    : { sortBy: [{ id: 'name', desc: false }] }
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
@@ -40,15 +41,8 @@ const Table = ({ columnData, rowData }: TProps) => {
         // @ts-ignore
         columns,
         data,
-        initialState: {
-          // @ts-ignore
-          sortBy: [
-            {
-              id: 'totalPoints',
-              desc: true,
-            },
-          ],
-        },
+        // @ts-ignore
+        initialState,
       },
       useSortBy
     )
@@ -74,7 +68,7 @@ const Table = ({ columnData, rowData }: TProps) => {
                   scope='col'
                   className={`${classNames(
                     i === 0 ? 'text-left' : 'text-center'
-                  )} py-3.5 pl-4 pr-3 font-semibold h-8`}
+                  )} transition py-3.5 pl-4 pr-3 font-semibold h-8 hover:bg-purple`}
                   // @ts-ignore
                   {...col.getHeaderProps(col.getSortByToggleProps())}
                 >
@@ -87,16 +81,13 @@ const Table = ({ columnData, rowData }: TProps) => {
                     {col.render('Header')}
                     {
                       // @ts-ignore
-                      col.isSorted ? (
+                      col.isSorted &&
                         // @ts-ignore
-                        col.isSortedDesc ? (
-                          <ChevronDownIcon className='w-5 h-5' />
+                        (col.isSortedDesc ? (
+                          <ChevronDownIcon className='w-5 h-5 ml-1' />
                         ) : (
-                          <ChevronUpIcon className='w-5 h-5' />
-                        )
-                      ) : (
-                        <ChevronUpDownIcon className='w-5 h-5' />
-                      )
+                          <ChevronUpIcon className='w-5 h-5 ml-1' />
+                        ))
                     }
                   </div>
                 </th>
