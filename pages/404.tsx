@@ -1,17 +1,17 @@
-import { ReactElement } from 'react'
-import {
-  Layout,
-  Container,
-  Aside,
-  Section,
-  PageLayout,
-} from '../components/common'
+// packages
+
+// components
+import { Layout, Container, Aside, Section } from '../components/common'
 import Headlines from '../components/Headlines'
 import HighlightMatch from '../components/HighlightMatch'
-import { HomeLayout } from '../components/HomeLayout'
+import { Custom404Layout } from '../components/Custom404Layout'
 
+// data
 import { currentMatch } from '../data.test'
-import { TArticle } from '../types/TArticle'
+
+// types
+import type { TArticle } from '../types/TArticle'
+import type { ReactElement } from 'react'
 
 const Custom404 = ({ articles }: { articles: TArticle[] }) => {
   return (
@@ -36,7 +36,7 @@ const Custom404 = ({ articles }: { articles: TArticle[] }) => {
 Custom404.getLayout = (page: ReactElement) => {
   return (
     <Layout>
-      <HomeLayout>{page}</HomeLayout>
+      <Custom404Layout>{page}</Custom404Layout>
     </Layout>
   )
 }

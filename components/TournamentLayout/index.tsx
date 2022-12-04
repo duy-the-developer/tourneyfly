@@ -21,6 +21,7 @@ export const TournamentLayout = ({ children }: { children: ReactNode }) => {
       {
         name: 'Leaderboard',
         href: `/tournament/${tournament_id}`,
+        pathname: '/tournament/[tournament_id]',
         icon: ChartBarIcon,
         current: true,
         type: 'button',
@@ -28,18 +29,21 @@ export const TournamentLayout = ({ children }: { children: ReactNode }) => {
       {
         name: 'Results',
         href: `/tournament/${tournament_id}/results`,
+        pathname: '/tournament/[tournament_id]/results',
         icon: TableCellsIcon,
         current: false,
       },
       {
         name: 'Teams',
         href: `/tournament/${tournament_id}/teams`,
+        pathname: '/tournament/[tournament_id]/teams',
         icon: UserGroupIcon,
         current: false,
       },
       {
         name: 'Players',
         href: `/tournament/${tournament_id}/teams`,
+        pathname: '/tournament/[tournament_id]/teams',
         icon: UsersIcon,
         current: false,
       },
@@ -55,5 +59,6 @@ export const TournamentLayout = ({ children }: { children: ReactNode }) => {
       { name: 'Gaming', href: '#' },
     ],
   }
+
   return <PageLayout navOptions={navigation}>{children}</PageLayout>
 }

@@ -68,7 +68,7 @@ const Table = ({ columnData, rowData, sortById, descending }: TProps) => {
                   scope='col'
                   className={`${classNames(
                     i === 0 ? 'text-left' : 'text-center'
-                  )} transition py-3.5 pl-4 pr-3 font-semibold h-8 hover:bg-purple`}
+                  )} transition py-3.5 px-3 font-semibold h-8 hover:bg-purple`}
                   // @ts-ignore
                   {...col.getHeaderProps(col.getSortByToggleProps())}
                 >

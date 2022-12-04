@@ -22,6 +22,6 @@ const defaultNavOptions = {
   ],
 }
 
-export const HomeLayout = ({ children }: { children: ReactNode }) => {
+export const Custom404Layout = ({ children }: { children: ReactNode }) => {
   return <PageLayout navOptions={defaultNavOptions}>{children}</PageLayout>
 }

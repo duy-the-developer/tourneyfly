@@ -19,12 +19,16 @@ import classNames from '../../../../utils/classNames'
 
 // types
 import { TMainNav } from '../../../../types/TNavigation'
+import { useRouter } from 'next/router'
 type TProps = {
   navigation: TMainNav
 }
 
 const NavBar = ({ navigation }: TProps) => {
   const { user } = useUser()
+  const { pathname } = useRouter()
+
+  console.log(pathname)
 
   return (
     <Popover
@@ -48,14 +52,24 @@ const NavBar = ({ navigation }: TProps) => {
               <div className='hidden lg:flex lg:items-center lg:justify-end xl:col-span-4'>
                 <Link
                   href='/quick-match'
-                  className='ml-5 flex-shrink-0 rounded-full bg-gray-900 p-1 text-aqua hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
+                  className={classNames(
+                    pathname === '/quick-match'
+                      ? 'text-black bg-aqua'
+                      : 'text-aqua hover:text-orange',
+                    'ml-5 flex-shrink-0 rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
+                  )}
                 >
                   <span className='sr-only'>Quick match</span>
                   <BoltIcon className='h-6 w-6' aria-hidden='true' />
                 </Link>
                 <Link
                   href='/'
-                  className='ml-5 flex-shrink-0 rounded-full bg-gray-900 p-1 text-aqua hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
+                  className={classNames(
+                    pathname === '/'
+                      ? 'text-black bg-aqua'
+                      : 'text-aqua hover:text-orange',
+                    'ml-5 flex-shrink-0 rounded-full p-1  focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
+                  )}
                 >
                   <span className='sr-only'>Tournaments</span>
                   <TrophyIcon className='h-6 w-6' aria-hidden='true' />

@@ -37,7 +37,14 @@ const ScoreBoard = () => {
     }
   })
 
-  return <Table columnData={columnsData} rowData={rowsData} />
+  return (
+    <Table
+      columnData={columnsData}
+      rowData={rowsData}
+      sortById='name'
+      descending={false}
+    />
+  )
 }
 
 export default ScoreBoard

@@ -8,11 +8,12 @@ import {
 } from '@heroicons/react/24/outline'
 
 // components
-import { Layout, PageLayout } from '../../../../components/common'
+import { Layout } from '../../../../components/common'
 import ScoreBoard from '../../../../components/ScoreBoard'
 
 // types
 import { ReactElement } from 'react'
+import { TournamentLayout } from '../../../../components/TournamentLayout'
 
 const TournamentResults = () => {
   const router = useRouter()
@@ -58,16 +59,20 @@ const TournamentResults = () => {
   }
 
   return (
-    <PageLayout navOptions={navigation}>
+    <>
       <main className='lg:col-span-9 xl:col-span-10'>
         <ScoreBoard />
       </main>
-    </PageLayout>
+    </>
   )
 }
 
 TournamentResults.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+  return (
+    <Layout>
+      <TournamentLayout>{page}</TournamentLayout>
+    </Layout>
+  )
 }
 
 export default TournamentResults

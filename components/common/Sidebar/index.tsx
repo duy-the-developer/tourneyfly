@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import SecondaryNav from './SecondaryNav'
 import PrimaryNav from './PrimaryNav'
 import { TMainNav, TSubNav } from '../../../types/TNavigation'

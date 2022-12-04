@@ -1,5 +1,4 @@
-import { TrophyIcon, BoltIcon } from '@heroicons/react/24/outline'
-import React, { ReactNode } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction } from 'react'
 import { TMainNav, TSubNav } from '../../../types/TNavigation'
 import Sidebar from '../Sidebar'
 
