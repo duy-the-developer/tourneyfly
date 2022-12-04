@@ -17,10 +17,17 @@ type TProps = {
 
 const navigation = {
   main: [
-    { name: 'Tournaments', href: '/', icon: TrophyIcon, current: true },
+    {
+      name: 'Tournaments',
+      href: '/',
+      pathname: '/',
+      icon: TrophyIcon,
+      current: true,
+    },
     {
       name: 'Quick Match',
       href: '/quick-match',
+      pathname: '/quick-match',
       icon: BoltIcon,
       current: false,
     },
