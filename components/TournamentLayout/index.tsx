@@ -49,14 +49,11 @@ export const TournamentLayout = ({ children }: { children: ReactNode }) => {
       },
     ],
     sub: [
-      { name: 'Movies', href: '#' },
-      { name: 'Food', href: '#' },
-      { name: 'Sports', href: '#' },
-      { name: 'Animals', href: '#' },
-      { name: 'Science', href: '#' },
-      { name: 'Dinosaurs', href: '#' },
-      { name: 'Talents', href: '#' },
-      { name: 'Gaming', href: '#' },
+      { name: 'Twitch', href: '#' },
+      { name: 'Instagram', href: '#' },
+      { name: 'Facebook', href: '#' },
+      { name: 'Tiktok', href: '#' },
+      { name: 'Discord', href: '#' },
     ],
   }
 
