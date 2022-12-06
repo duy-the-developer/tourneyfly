@@ -4,7 +4,6 @@ import { Aside, Section, Layout } from '../../../components/common'
 import LeaderBoard from '../../../components/LeaderBoard'
 import TournamentDetails from '../../../components/TournamentDetails'
 import TournamentSchedule from '../../../components/TournamentSchedule'
-import PageLayout from '../../../components/common/PageLayout'
 
 // data
 import { tournaments } from '../../../data.test'

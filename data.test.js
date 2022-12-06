@@ -205,7 +205,7 @@ export const teams = [
     },
   },
   {
-    id: 'b',
+    id: 'e',
     name: 'Team Caffeine',
     imageUrl: 'https://cdn.countryflags.com/thumbs/denmark/flag-square-250.png',
     members: ['thegodfather', 'papaclause'],
@@ -216,17 +216,17 @@ export const teams = [
     totalPoints: 4,
     results: {
       a: '0-2',
-      b: null,
-      c: '2-2',
+      b: '2-2',
+      c: '2-1',
       d: '1-2',
-      e: '2-1',
+      e: null,
       f: '3-0',
       g: '1-4',
       h: '0-0',
     },
   },
   {
-    id: 'c',
+    id: 'b',
     name: 'Al Capowned',
     imageUrl:
       'https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-250.png',
@@ -238,8 +238,8 @@ export const teams = [
     totalPoints: 2,
     results: {
       a: '2-2',
-      b: '2-0',
-      c: null,
+      b: null,
+      c: '2-0',
       d: '1-2',
       e: '2-1',
       f: '3-0',
@@ -269,7 +269,7 @@ export const teams = [
     },
   },
   {
-    id: 'e',
+    id: 'c',
     name: 'C-Suite Champs',
     imageUrl: 'https://cdn.countryflags.com/thumbs/japan/flag-square-250.png',
     members: ['mickeymouse', 'peterpan'],
@@ -281,9 +281,9 @@ export const teams = [
     results: {
       a: '1-2',
       b: '2-0',
-      c: '2-2',
+      c: null,
       d: '1-2',
-      e: null,
+      e: '2-2',
       f: '3-0',
       g: '1-4',
       h: '0-0',

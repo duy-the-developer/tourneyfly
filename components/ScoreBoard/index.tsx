@@ -1,48 +1,85 @@
+// packages
+import { createColumnHelper } from '@tanstack/react-table'
 import Image from 'next/image'
-import Table from '../common/Table'
 import { NameCell } from '../common/Table/NameCell'
+import { Table } from '../common'
 
 // data
 import { teams } from '../../data.test'
 
-const ScoreBoard = () => {
-  const columnsData = [
-    { Header: 'NAME', accessor: 'name' },
-    ...teams.map((each) => ({
-      Header: (
-        <div className='flex justify-center'>
-          <Image
-            className='rounded-full'
-            width={30}
-            height={30}
-            src={each.imageUrl}
-            alt={`${each.name}-logo`}
-          />
-        </div>
-      ),
-      accessor: each.id,
-    })),
-  ]
+// types
+type TColumns = {
+  name: string
+  imageUrl: string
+  members: string[]
+  a: string
+  b: string
+  c: string
+  d: string
+  e: string
+  f: string
+  g: string
+  h: string
+}
 
-  const rowsData = teams.map((each) => {
+const ScoreBoard = () => {
+  const data = teams.map((each) => {
+    const { name, imageUrl, members, results } = each
     return {
-      name: (
-        <NameCell
-          name={each.name}
-          imageUrl={each.imageUrl}
-          members={each.members}
-        />
-      ),
-      ...each.results,
+      name,
+      imageUrl,
+      members,
+      ...results,
     }
   })
 
+  const columnHelper = createColumnHelper<TColumns>()
+
+  // generate array of column headers sorted by team name alphabetically -> ['name', 'a','b','c',...]
+  const headers = [
+    'name',
+    ...teams.sort((a, b) => (a.name > b.name ? 1 : -1)).map((each) => each.id),
+  ]
+
+  // use headers array + columnHelper from @tanstack/react-table to generate columns
+  const columns = headers
+    .map((key) => {
+      return columnHelper.accessor((row) => row[key as keyof typeof row], {
+        id: key,
+        cell: ({ row, getValue }) => {
+          const { name, imageUrl, members } = row.original
+          return key === 'name' ? (
+            <NameCell name={name} imageUrl={imageUrl} members={members} />
+          ) : (
+            getValue()
+          )
+        },
+        header: ({ column: { id } }) => {
+          console.log(id)
+          return id === 'name' ? (
+            id.toUpperCase()
+          ) : (
+            <div className='flex justify-center'>
+              <Image
+                src={teams.find((team) => team.id === id)!.imageUrl}
+                alt={`team ${id} logo`}
+                className='rounded-full'
+                width={30}
+                height={30}
+              />
+            </div>
+          )
+        },
+      })
+    })
+    // filter out imageUrl and members column
+    .filter((column) => column.id !== 'members' && column.id !== 'imageUrl')
+
   return (
     <Table
-      columnData={columnsData}
-      rowData={rowsData}
-      sortById='name'
-      descending={false}
+      columns={columns}
+      rowData={data}
+      defaultSort={[{ id: 'name', desc: false }]}
     />
   )
 }

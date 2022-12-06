@@ -15,11 +15,13 @@ const Headlines = ({ articles }: { articles: TArticle[] }) => {
               className='transition flex items-center space-x-6 px-4 py-4 cursor-pointer hover:bg-purple hover:-translate-y-1 rounded-lg group'
               target='_blank'
             >
-              <img
-                src={urlToImage}
-                alt={title}
-                className='truncate h-20 w-20 flex-none rounded-md object-cover object-center'
-              />
+              <picture className='h-20 w-20 flex-none'>
+                <img
+                  src={urlToImage}
+                  alt={title}
+                  className='h-20 w-20 rounded-md object-cover object-center'
+                />
+              </picture>
 
               <div className='flex-col space-y-1'>
                 <p className='text-gray-200 line-clamp-2'>{title}</p>

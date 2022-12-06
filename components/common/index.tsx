@@ -7,6 +7,7 @@ import ItemList from './ItemList'
 import ProfileImage from './ProfileImage'
 import Section from './Section'
 import Sidebar from './Sidebar'
+import { Table } from './Table'
 
 export {
   Aside,
@@ -18,4 +19,5 @@ export {
   ProfileImage,
   Section,
   Sidebar,
+  Table,
 }
