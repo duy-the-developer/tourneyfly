@@ -2,9 +2,11 @@ import classNames from '../../../../utils/classNames'
 import { flexRender, Row } from '@tanstack/react-table'
 import type { Table, Cell } from '@tanstack/react-table'
 
+type THandleClick = (cell: Cell<any, unknown>) => void
+
 type TProps = {
     table: Table<any>
-    handleClick?: (cell: Cell<any, unknown>) => void
+    handleClick?: THandleClick
 }
 
 export const TableBody = ({ table, handleClick }: TProps) => {
@@ -13,7 +15,7 @@ export const TableBody = ({ table, handleClick }: TProps) => {
             key={cell.id}
             className={classNames(
                 i === 0 ? 'text-left' : 'text-center',
-                handleClick && 'hover:bg-purple',
+                (handleClick as THandleClick) && 'hover:bg-purple',
                 'm-0 p-0 whitespace-nowrap text-sm text-gray-200'
             )}
             onClick={() => handleClick && handleClick(cell)}
