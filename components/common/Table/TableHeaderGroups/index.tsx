@@ -6,17 +6,15 @@ const HeaderRow = ({ headerGroup }: { headerGroup: CoreHeaderGroup<any> }) => {
         <TableHeader header={header} i={i} key={header.id} />
     ))
 
-    return (
-        <tr key={headerGroup.id} className='text-aqua text-sm leading-8'>
-            {headers}
-        </tr>
-    )
+    return <tr className='text-aqua text-sm leading-8'>{headers}</tr>
 }
 
-export const TableHeaderGroups = ({ table }: { table: Table<any> }) => (
-    <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-            <HeaderRow headerGroup={headerGroup} />
-        ))}
-    </thead>
-)
+export const TableHeaderGroups = ({ table }: { table: Table<any> }) => {
+    const headerRows = table
+        .getHeaderGroups()
+        .map((headerGroup) => (
+            <HeaderRow key={headerGroup.id} headerGroup={headerGroup} />
+        ))
+
+    return <thead>{headerRows}</thead>
+}
