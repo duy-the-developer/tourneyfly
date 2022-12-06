@@ -8,6 +8,7 @@ import ProfileImage from './ProfileImage'
 import Section from './Section'
 import Sidebar from './Sidebar'
 import { Table } from './Table'
+import { Modal } from './Modal'
 
 export {
   Aside,
@@ -20,4 +21,5 @@ export {
   Section,
   Sidebar,
   Table,
+  Modal,
 }

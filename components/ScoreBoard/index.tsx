@@ -2,11 +2,12 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import Image from 'next/image'
 import { NameCell } from '../common/Table/NameCell'
-import { Table } from '../common'
+import { useState } from 'react'
 
 // data
 import { teams } from '../../data.test'
 import { Row } from 'react-table'
+import { Modal, Table } from '../common'
 
 // types
 export type TData = {
@@ -24,16 +25,7 @@ export type TData = {
 }
 
 const ScoreBoard = () => {
-  const data: TData[] = teams.map((each) => {
-    const { name, imageUrl, members, results } = each
-    return {
-      name,
-      imageUrl,
-      members,
-      ...results,
-    }
-  })
-
+  const [openModal, setOpenModal] = useState<boolean>(false)
   const columnHelper = createColumnHelper<TData>()
 
   // generate array of column headers sorted by team name alphabetically -> ['name', 'a','b','c',...]
@@ -77,12 +69,26 @@ const ScoreBoard = () => {
       .filter((column) => column.id !== 'members' && column.id !== 'imageUrl'),
   ]
 
+  const data: TData[] = teams.map((each) => {
+    const { name, imageUrl, members, results } = each
+    return {
+      name,
+      imageUrl,
+      members,
+      ...results,
+    }
+  })
+
   return (
-    <Table
-      columnData={columns}
-      rowData={data}
-      defaultSort={[{ id: 'name', desc: false }]}
-    />
+    <>
+      <Modal open={openModal} setOpen={setOpenModal} />
+      <Table
+        columnData={columns}
+        rowData={data}
+        defaultSort={[{ id: 'name', desc: false }]}
+        setOpenModal={setOpenModal}
+      />
+    </>
   )
 }
 
