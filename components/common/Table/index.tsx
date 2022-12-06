@@ -1,10 +1,12 @@
 // packages
-import { useState } from 'react'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
+import { useState, useEffect, useMemo } from 'react'
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
   getSortedRowModel,
+  ColumnDef,
 } from '@tanstack/react-table'
 
 // components
@@ -15,10 +17,9 @@ import classNames from '../../../utils/classNames'
 
 // types
 import type { SortingState } from '@tanstack/react-table'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
 type TProps = {
   rowData: any[]
-  columns: any[]
+  columnData: any[]
   defaultSort: [
     {
       id: string
@@ -28,19 +29,67 @@ type TProps = {
   [key: string]: any
 }
 
-export const Table = ({ columns, rowData, defaultSort }: TProps) => {
+declare module '@tanstack/react-table' {
+  //@ts-ignore
+  interface TableMeta<TData extends RowData> {
+    updateData: (rowIndex: number, columnId: string, value: unknown) => void
+  }
+}
+
+const defaultColumn: Partial<ColumnDef<any>> = {
+  cell: ({ getValue, row: { index }, column: { id }, table }) => {
+    const initialValue = getValue()
+    // We need to keep and update the state of the cell normally
+    const [value, setValue] = useState(initialValue)
+
+    // When the input is blurred, we'll call our table meta's updateData function
+    const onBlur = () => {
+      table.options.meta?.updateData(index, id, value)
+    }
+
+    // If the initialValue is changed external, sync it up with our state
+    useEffect(() => {
+      setValue(initialValue)
+    }, [initialValue])
+
+    return (
+      <input
+        value={value as string}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={onBlur}
+        className='bg-transparent w-6'
+      />
+    )
+  },
+}
+
+export const Table = ({ columnData, rowData, defaultSort }: TProps) => {
   const [data, setData] = useState(() => [...rowData])
   const [sorting, setSorting] = useState<SortingState>(() => [...defaultSort])
+  const columns = useMemo(() => columnData, [])
 
   const table = useReactTable({
     data,
     columns,
+    defaultColumn,
     state: {
       sorting,
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    meta: {
+      updateData: (rowIndex, columnId, value) => {
+        setData((old) =>
+          old.map((row, index) => {
+            if (index === rowIndex) {
+              return { ...old[rowIndex]!, [columnId]: value }
+            }
+            return row
+          })
+        )
+      },
+    },
   })
 
   return (

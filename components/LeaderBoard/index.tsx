@@ -9,7 +9,7 @@ import { Table } from '../common'
 import { teams } from '../../data.test'
 
 // types
-type TTeam = {
+type TData = {
   name: string
   imageUrl: string
   members: string[]
@@ -20,7 +20,7 @@ type TTeam = {
 }
 
 const LeaderBoard = () => {
-  const columnHelper = createColumnHelper<TTeam>()
+  const columnHelper = createColumnHelper<TData>()
   const columns = [
     columnHelper.accessor((row) => row.name, {
       id: 'name',
@@ -50,7 +50,7 @@ const LeaderBoard = () => {
     }),
   ]
 
-  const data: TTeam[] = teams.map(
+  const data: TData[] = teams.map(
     ({ name, imageUrl, members, wins, losses, ties, totalPoints }) => {
       return {
         name,
@@ -66,7 +66,7 @@ const LeaderBoard = () => {
 
   return (
     <Table
-      columns={columns}
+      columnData={columns}
       rowData={data}
       defaultSort={[{ id: 'Pts', desc: true }]}
     />
