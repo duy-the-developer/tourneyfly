@@ -1,15 +1,13 @@
-import { Table } from '@tanstack/react-table'
 import classNames from '../../../../utils/classNames'
 import { flexRender } from '@tanstack/react-table'
-
-import type { Dispatch, SetStateAction } from 'react'
+import type { Table, Cell } from '@tanstack/react-table'
 
 type TProps = {
   table: Table<any>
-  setOpenModal?: Dispatch<SetStateAction<boolean>>
+  handleClick?: (cell: Cell<any, unknown>) => void
 }
 
-export const TableBody = ({ table, setOpenModal }: TProps) => {
+export const TableBody = ({ table, handleClick }: TProps) => {
   return (
     <tbody className='divide-y divide-gray-800'>
       {table.getRowModel().rows.map((row) => (
@@ -23,7 +21,7 @@ export const TableBody = ({ table, setOpenModal }: TProps) => {
               className={`${classNames(
                 i === 0 ? 'text-left' : 'text-center'
               )} m-0 p-0 whitespace-nowrap text-sm text-gray-200 hover:bg-purple`}
-              onClick={() => setOpenModal && setOpenModal(true)}
+              onClick={() => handleClick && handleClick(cell)}
             >
               <button
                 className={`${classNames(

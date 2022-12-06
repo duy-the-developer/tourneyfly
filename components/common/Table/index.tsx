@@ -1,5 +1,5 @@
 // packages
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, Dispatch, SetStateAction } from 'react'
 import {
   getCoreRowModel,
   useReactTable,
@@ -11,9 +11,9 @@ import { TableContainer } from './TableContainer'
 import { TableHeaderGroups } from './TableHeaderGroups'
 
 // types
-import type { SortingState } from '@tanstack/react-table'
-import type { Dispatch, SetStateAction } from 'react'
+import type { Cell, SortingState } from '@tanstack/react-table'
 import { TableBody } from './TableBody'
+
 type TProps = {
   rowData: any[]
   columnData: any[]
@@ -23,15 +23,14 @@ type TProps = {
       desc: boolean
     }
   ]
-  setOpenModal?: Dispatch<SetStateAction<boolean>>
-  [key: string]: any
+  handleCellClick?: (cell: Cell<any, unknown>) => void
 }
 
 export const Table = ({
   columnData,
   rowData,
   defaultSort,
-  setOpenModal,
+  handleCellClick,
 }: TProps) => {
   const [data, setData] = useState(() => [...rowData])
   const [sorting, setSorting] = useState<SortingState>([])
@@ -55,7 +54,7 @@ export const Table = ({
       <TableContainer>
         <table className='bg-slate-900 bg-opacity-50 min-w-full divide-y divide-gray-500'>
           <TableHeaderGroups table={table} />
-          <TableBody table={table} setOpenModal={setOpenModal} />
+          <TableBody table={table} handleClick={handleCellClick} />
         </table>
       </TableContainer>
     </>

@@ -1,17 +1,21 @@
-import { Dispatch, Fragment, SetStateAction, useRef } from 'react'
+import { Dispatch, Fragment, ReactNode, SetStateAction, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
 type TProps = {
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
-  message?: string
+  title: string
+  message: string
+  children: ReactNode
 }
 
 export const Modal = ({
   open,
   setOpen,
   message = 'TODO: Add Message',
+  title,
+  children,
 }: TProps) => {
   const cancelButtonRef = useRef(null)
 
@@ -48,15 +52,15 @@ export const Modal = ({
             >
               <Dialog.Panel className='relative transform overflow-hidden rounded-lg bg-slate-900 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6'>
                 <div>
-                  <div className='mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100'>
-                    {/* //TODO: Add content here */}
+                  <div className='mx-auto flex items-center justify-center rounded-full bg-green-100'>
+                    {children}
                   </div>
                   <div className='mt-3 text-center sm:mt-5'>
                     <Dialog.Title
                       as='h3'
-                      className='text-lg font-medium leading-6 text-gray-900'
+                      className='text-lg font-medium leading-6 text-slate-200'
                     >
-                      Update Results
+                      {title}
                     </Dialog.Title>
                     <div className='mt-2'>
                       <p className='text-sm text-gray-500'>{message}</p>
