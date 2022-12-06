@@ -55,7 +55,6 @@ const ScoreBoard = () => {
           )
         },
         header: ({ column: { id } }) => {
-          console.log(id)
           return id === 'name' ? (
             id.toUpperCase()
           ) : (

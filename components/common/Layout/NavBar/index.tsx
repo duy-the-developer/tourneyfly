@@ -28,8 +28,6 @@ const NavBar = ({ navigation }: TProps) => {
   const { user } = useUser()
   const { pathname } = useRouter()
 
-  console.log(pathname)
-
   return (
     <Popover
       as='header'
