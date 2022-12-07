@@ -1,21 +1,40 @@
 import { Dispatch, Fragment, ReactNode, SetStateAction, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/24/outline'
 
 type TProps = {
     open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>
     title: string
     message: string
+    okayLabel?: string
     children: ReactNode
+    handleOkay: (arg?: any) => void
 }
 
-export const Modal = ({ open, setOpen, message = 'TODO: Add Message', title, children }: TProps) => {
+export const Modal = ({
+    open,
+    setOpen,
+    message = 'TODO: Add Message',
+    okayLabel = 'Accept',
+    title,
+    children,
+    handleOkay,
+}: TProps) => {
     const cancelButtonRef = useRef(null)
+
+    const handleUpdate = () => {
+        handleOkay()
+        setOpen(false)
+    }
 
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as='div' className='relative z-10' initialFocus={cancelButtonRef} onClose={setOpen}>
+            <Dialog
+                as='div'
+                className='relative z-10'
+                initialFocus={cancelButtonRef}
+                onClose={setOpen}
+            >
                 <Transition.Child
                     as={Fragment}
                     enter='ease-out duration-300'
@@ -45,11 +64,16 @@ export const Modal = ({ open, setOpen, message = 'TODO: Add Message', title, chi
                                         {children}
                                     </div>
                                     <div className='mt-3 text-center sm:mt-5'>
-                                        <Dialog.Title as='h3' className='text-lg font-medium leading-6 text-slate-200'>
+                                        <Dialog.Title
+                                            as='h3'
+                                            className='text-lg font-medium leading-6 text-slate-200'
+                                        >
                                             {title}
                                         </Dialog.Title>
                                         <div className='mt-2'>
-                                            <p className='text-sm text-gray-500'>{message}</p>
+                                            <p className='text-sm text-gray-500'>
+                                                {message}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -57,9 +81,9 @@ export const Modal = ({ open, setOpen, message = 'TODO: Add Message', title, chi
                                     <button
                                         type='button'
                                         className='inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 sm:col-start-2 sm:text-sm'
-                                        onClick={() => setOpen(false)}
+                                        onClick={handleUpdate}
                                     >
-                                        Update
+                                        {okayLabel}
                                     </button>
                                     <button
                                         type='button'

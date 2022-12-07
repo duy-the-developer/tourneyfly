@@ -1,6 +1,10 @@
 // packages
-import { useState, useMemo, useEffect, Dispatch, SetStateAction } from 'react'
-import { getCoreRowModel, useReactTable, getSortedRowModel } from '@tanstack/react-table'
+import { useState, useMemo, useEffect } from 'react'
+import {
+    getCoreRowModel,
+    useReactTable,
+    getSortedRowModel,
+} from '@tanstack/react-table'
 
 // components
 import { TableContainer } from './TableContainer'
@@ -11,8 +15,8 @@ import type { Cell, SortingState } from '@tanstack/react-table'
 import { TableBody } from './TableBody'
 
 type TProps = {
-    rowData: any[]
     columnData: any[]
+    rowData: any[]
     defaultSort: [
         {
             id: string
@@ -22,8 +26,12 @@ type TProps = {
     handleCellClick?: (cell: Cell<any, unknown>) => void
 }
 
-export const Table = ({ columnData, rowData, defaultSort, handleCellClick }: TProps) => {
-    const [data, setData] = useState(() => [...rowData])
+export const Table = ({
+    columnData,
+    rowData,
+    defaultSort,
+    handleCellClick,
+}: TProps) => {
     const [sorting, setSorting] = useState<SortingState>([])
     const columns = useMemo(() => columnData, [])
 
@@ -32,7 +40,7 @@ export const Table = ({ columnData, rowData, defaultSort, handleCellClick }: TPr
     }, [])
 
     const table = useReactTable({
-        data,
+        data: rowData,
         columns,
         state: { sorting },
         onSortingChange: setSorting,
@@ -41,13 +49,11 @@ export const Table = ({ columnData, rowData, defaultSort, handleCellClick }: TPr
     })
 
     return (
-        <>
-            <TableContainer>
-                <table className='bg-slate-900 bg-opacity-50 min-w-full divide-y divide-gray-500'>
-                    <TableHeaderGroups table={table} />
-                    <TableBody table={table} handleClick={handleCellClick} />
-                </table>
-            </TableContainer>
-        </>
+        <TableContainer>
+            <table className='bg-slate-900 bg-opacity-50 min-w-full divide-y divide-gray-500'>
+                <TableHeaderGroups table={table} />
+                <TableBody table={table} handleClick={handleCellClick} />
+            </table>
+        </TableContainer>
     )
 }
