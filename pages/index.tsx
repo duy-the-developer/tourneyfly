@@ -24,12 +24,9 @@ const Home = ({ articles, tournaments }: TProps) => (
     <>
         <main className='lg:col-span-9 xl:col-span-6'>
             <ItemList>
-                {tournaments.map(
-                    (each) => (
-                        console.log(each),
-                        (<TournamentCard tournament={each} key={each._id} />)
-                    )
-                )}
+                {tournaments.map((each) => (
+                    <TournamentCard tournament={each} key={each._id} />
+                ))}
             </ItemList>
         </main>
         <Aside>
@@ -57,19 +54,20 @@ export async function getServerSideProps() {
         // that means you can write code such as direct database queries without sending them to the client
 
         // use Promise.all to fetch data in parallel
-        const [articles, tournaments] = await Promise.all([
-            getArticles(),
+        const [tournaments] = await Promise.all([
+            // getArticles(),
             getTournaments(),
         ])
 
         return {
             props: {
-                articles,
+                // articles,
                 tournaments: JSON.parse(JSON.stringify(tournaments)),
             },
         }
     } catch (error) {
         console.error(error)
+        // TODO: handle error
     }
 }
 

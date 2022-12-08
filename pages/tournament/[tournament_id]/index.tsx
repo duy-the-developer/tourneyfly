@@ -1,41 +1,69 @@
 // components
 import { Aside, Section, Layout } from '../../../components/common'
-
 import LeaderBoard from '../../../components/LeaderBoard'
 import TournamentDetails from '../../../components/TournamentDetails'
 import TournamentSchedule from '../../../components/TournamentSchedule'
-
-// data
-import { tournaments } from '../../../data.test'
-import type { ReactElement } from 'react'
 import { TournamentLayout } from '../../../components/TournamentLayout'
 
-// types
+// lib
+import { getTournamentById } from '../../../lib/getTournamentById'
 
-const Tournament = () => {
-  return (
-    <>
-      <main className='lg:col-span-9 xl:col-span-6'>
-        <LeaderBoard />
-      </main>
-      <Aside>
-        <Section label='Tournament details'>
-          <TournamentDetails tournament={tournaments[0]} />
-        </Section>
-        <Section label='Tournament schedule'>
-          <TournamentSchedule />
-        </Section>
-      </Aside>
-    </>
-  )
+// types
+import type { ReactElement } from 'react'
+import type { TTournament } from '../../../types'
+
+type TProps = {
+    tournament: TTournament
+}
+
+const Tournament = ({ tournament }: TProps) => {
+    return (
+        <>
+            <main className='lg:col-span-9 xl:col-span-6'>
+                <LeaderBoard />
+            </main>
+            <Aside>
+                <Section label='Tournament details'>
+                    <TournamentDetails tournament={tournament} />
+                </Section>
+                <Section label='Tournament schedule'>
+                    <TournamentSchedule />
+                </Section>
+            </Aside>
+        </>
+    )
 }
 
 Tournament.getLayout = (page: ReactElement) => {
-  return (
-    <Layout>
-      <TournamentLayout>{page}</TournamentLayout>
-    </Layout>
-  )
+    return (
+        <Layout>
+            <TournamentLayout>{page}</TournamentLayout>
+        </Layout>
+    )
+}
+
+export const getServerSideProps = async (context: any) => {
+    const { tournament_id } = context.query
+    try {
+        // since we are using getStaticProps, we can fetch data at build time // these functions will not be included in the client bundle
+        // that means you can write code such as direct database queries without sending them to the client
+
+        // use Promise.all to fetch data in parallel
+        const [tournament] = await Promise.all([
+            // getArticles(),
+            getTournamentById(tournament_id as string),
+        ])
+
+        return {
+            props: {
+                // articles,
+                tournament: JSON.parse(JSON.stringify(tournament)),
+            },
+        }
+    } catch (error) {
+        console.error(error)
+        // TODO: handle error
+    }
 }
 
 export default Tournament

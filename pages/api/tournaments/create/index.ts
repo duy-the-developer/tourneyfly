@@ -29,8 +29,5 @@ export default async function createTournament(
     } catch (error) {
         console.error(error)
         return res.status(500).json({ ok: false, status: 500 })
-    } finally {
-        client!.close()
-        console.log(`[ INFO ]: Disconnected from MongoDB.`)
     }
 }

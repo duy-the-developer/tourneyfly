@@ -1,10 +1,10 @@
 import { CalendarIcon, UserGroupIcon } from '@heroicons/react/24/outline'
 import React from 'react'
-import { classNames } from '../../utils'
+import { classNames, getTournamentStatus } from '../../utils'
 import Link from 'next/link'
 
 import { TTournament } from '../../types/TTournament'
-import { format } from 'date-fns'
+import { format, compareAsc } from 'date-fns'
 
 const TournamentCard = ({
     tournament: { _id, name, startDate, teams },
@@ -12,14 +12,9 @@ const TournamentCard = ({
     tournament: TTournament
 }) => {
     const startDateObj = new Date(startDate)
-    const today = new Date()
-    const status =
-        startDateObj > today
-            ? startDateObj < today
-                ? 'Completed'
-                : 'Upcoming'
-            : 'In progress'
     const startDateAsString = format(startDateObj, 'yyyy-MM-dd')
+
+    const status = getTournamentStatus(startDateObj)
 
     return (
         <li className='transition hover:dark:bg-purple hover:-translate-y-1 hover:scale-105 dark:bg-slate-900 dark:bg-opacity-50 rounded-lg'>
@@ -27,7 +22,7 @@ const TournamentCard = ({
                 <div className='px-4 py-4 sm:px-6'>
                     <div className='flex items-center justify-between'>
                         <h1 className='truncate text-xl font-lg text-aqua'>
-                            {name}
+                            {name.toUpperCase()}
                         </h1>
                         <div className='ml-2 flex flex-shrink-0'>
                             <p

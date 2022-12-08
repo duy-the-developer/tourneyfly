@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 import { InputWithLabel, Modal } from '../../../../../common'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
+import { useRouter } from 'next/router'
 
 type TProps = {
     openModal: boolean
@@ -13,6 +14,7 @@ const formattedDate = format(today, 'yyyy-MM-dd')
 
 export const CreateTournamentModal = ({ openModal, setOpenModal }: TProps) => {
     const { user } = useUser()
+    const router = useRouter()
     const [tournamentName, setTournamentName] = useState('')
     const [tournamentStateDate, setTournamentStartDate] =
         useState(formattedDate)
@@ -39,7 +41,8 @@ export const CreateTournamentModal = ({ openModal, setOpenModal }: TProps) => {
         const response = await fetch('/api/tournaments/create', fetchOptions)
 
         if (response.status === 200) {
-            console.log(response)
+            // trigger revalidation
+            router.replace(router.asPath)
         } else {
             console.log('Error creating tournament')
         }

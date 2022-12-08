@@ -1,20 +1,24 @@
+import { format } from 'date-fns'
 import { TTournament } from '../../types/TTournament'
-import {
-    UserGroupIcon,
-    CalendarIcon,
-    TrophyIcon,
-} from '@heroicons/react/24/outline'
+import { UserGroupIcon, CalendarIcon } from '@heroicons/react/24/outline'
 
-import { classNames } from '../../utils'
+import { classNames, getTournamentStatus } from '../../utils'
 
-const TournamentDetails = ({ tournament }: { tournament: TTournament }) => {
-    const { title, status, teamNum, startDate } = tournament
+const TournamentDetails = ({
+    tournament: { name, teams, startDate },
+}: {
+    tournament: TTournament
+}) => {
+    const startDateObj = new Date(startDate)
+    const startDateAsString = format(startDateObj, 'yyyy-MM-dd')
+    const status = getTournamentStatus(startDateObj)
+
     return (
         <div className='p-2 text-gray-300 dark:bg-gray-900 dark:bg-opacity-50 rounded-lg'>
             <div className='px-4 py-4'>
                 <div className='flex items-center justify-between'>
                     <h1 className='truncate text-xl font-lg text-aqua'>
-                        {title}
+                        {name.toUpperCase()}
                     </h1>
                     <div className='ml-2 flex flex-shrink-0'>
                         <p
@@ -36,7 +40,7 @@ const TournamentDetails = ({ tournament }: { tournament: TTournament }) => {
                                 className='mr-1.5 h-5 w-5 flex-shrink-0 text-gray-300'
                                 aria-hidden='true'
                             />
-                            {teamNum}
+                            {teams.length}
                         </p>
                     </div>
                     <div className='mt-2 flex items-center text-sm text-gray-300 sm:mt-0'>
@@ -44,7 +48,9 @@ const TournamentDetails = ({ tournament }: { tournament: TTournament }) => {
                             className='mr-1.5 h-5 w-5 flex-shrink-0 text-gray-300'
                             aria-hidden='true'
                         />
-                        <time dateTime={startDate}>{startDate}</time>
+                        <time dateTime={startDateAsString}>
+                            {startDateAsString}
+                        </time>
                     </div>
                 </div>
             </div>
