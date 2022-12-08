@@ -1,6 +1,5 @@
 import { ObjectId } from 'mongodb'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { teams } from '../../../../data.test'
 import clientPromise from '../../../../lib/mongodb'
 import { TTeam } from '../../../../types'
 

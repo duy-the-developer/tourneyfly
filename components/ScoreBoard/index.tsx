@@ -1,5 +1,6 @@
 // packages
 import { useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
 
 // data
 import { Modal, Table } from '../common'
@@ -9,6 +10,7 @@ import { useTableData } from '../../hooks/useTableData'
 import type { Cell } from '@tanstack/react-table'
 import { UpdateDiaglog } from './UpdateDialog'
 import type { TTeam } from '../../types'
+import { useRouter } from 'next/router'
 
 export type TUpdateParams = {
     rowIndex: number
@@ -24,7 +26,15 @@ export type TData = {
     [key: string]: any | null
 }
 
-const ScoreBoard = ({ teams }: { teams: TTeam[] }) => {
+type TProps = {
+    tournament_id: string
+    teams: TTeam[]
+    ownerEmail: string
+}
+
+const ScoreBoard = ({ tournament_id, teams, ownerEmail }: TProps) => {
+    const router = useRouter()
+    const { user } = useUser()
     const [rowData, allColumns] = useTableData(teams)
     const [data, setData] = useState(() => [...rowData])
     const [openModal, setOpenModal] = useState<boolean>(false)
@@ -41,7 +51,9 @@ const ScoreBoard = ({ teams }: { teams: TTeam[] }) => {
         getValue,
     }: Cell<any, unknown>): void => {
         // return early if teamA and teamB are the same team
-        if (columnId === rowData.id) return
+        if (columnId === rowData._id) return
+        // return early if user is not the owner
+        if (user?.email !== ownerEmail) return
 
         const cellValue = getValue() as string
         setFirstTeam(rowData)
@@ -57,7 +69,7 @@ const ScoreBoard = ({ teams }: { teams: TTeam[] }) => {
         setOpenModal(true)
     }
 
-    const handleScoreUpdate = (e: Event) => {
+    const handleScoreUpdate = async (e: Event) => {
         e.preventDefault()
         const updateRowData = (prev: any[]) =>
             prev.map((row, index) => {
@@ -78,8 +90,34 @@ const ScoreBoard = ({ teams }: { teams: TTeam[] }) => {
                       }
                     : row
             })
-
         setData(updateRowData)
+
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                tournament_id,
+                firstTeamId: firstTeam!._id,
+                secondTeamId: secondTeam!._id,
+                firstTeamScore,
+                secondTeamScore,
+            }),
+        }
+
+        const response = await fetch(
+            '/api/tournaments/update-results',
+            fetchOptions
+        )
+
+        if (response.status === 200) {
+            // trigger revalidation
+            router.replace(router.asPath)
+        } else {
+            console.log('Error adding team to tournament')
+        }
+
         setOpenModal(false)
     }
 

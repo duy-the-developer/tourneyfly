@@ -9,19 +9,21 @@ import { getTournamentById } from '../../../../lib/getTournamentById'
 // types
 import type { ReactElement } from 'react'
 import type { TTournament } from '../../../../types'
-import type { TTeam } from '../../../../types'
 import AddTeamButton from '../../../../components/AddTeamButton'
-import { teams } from '../../../../data.test'
 
 type TProps = {
     tournament: TTournament
 }
 
 const TournamentResults = ({ tournament }: TProps) => {
-    const { teams } = tournament
+    const { _id, teams, ownerEmail } = tournament
     return (
         <main className='lg:col-span-9 xl:col-span-10'>
-            <ScoreBoard teams={teams as any[]} />
+            <ScoreBoard
+                tournament_id={_id.toString()}
+                teams={teams as any[]}
+                ownerEmail={ownerEmail}
+            />
             {teams.length === 0 && <AddTeamButton />}
         </main>
     )

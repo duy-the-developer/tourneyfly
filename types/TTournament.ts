@@ -3,4 +3,5 @@ export type TTournament = {
     name: string
     startDate: string
     teams: string[]
+    ownerEmail: string
 }
