@@ -1,9 +1,9 @@
-import { useUser } from '@auth0/nextjs-auth0'
+import { useUser } from "@auth0/nextjs-auth0";
 
-type TProps = { cStyle: string }
+type TProps = { cStyle: string };
 
 const ProfileImage = ({ cStyle }: TProps) => {
-  const { user } = useUser()
+  const { user } = useUser();
 
   return (
     <picture>
@@ -13,12 +13,12 @@ const ProfileImage = ({ cStyle }: TProps) => {
           <img
             className={`${cStyle} rounded-full`}
             src={user.picture!}
-            alt='profile image'
+            alt="profile image"
           />
         </picture>
       )}
     </picture>
-  )
-}
+  );
+};
 
-export default ProfileImage
+export default ProfileImage;

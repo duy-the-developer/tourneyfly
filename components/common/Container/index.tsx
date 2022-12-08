@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react";
 
 const Container = ({
   children,
   cStyle,
 }: {
-  children: ReactNode
-  cStyle?: string
+  children: ReactNode;
+  cStyle?: string;
 }) => {
   return (
     <div
@@ -13,7 +13,7 @@ const Container = ({
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default Container
+export default Container;
