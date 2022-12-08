@@ -37,7 +37,7 @@ export const ComboBoxWithImage = ({ label, selected, setSelected }: TProps) => {
                     onChange={(event) => setQuery(event.target.value)}
                     displayValue={(country) => {
                         // @ts-ignore
-                        return (country as TCountry)!.name
+                        return (country as TCountry)?.name
                     }}
                 />
                 <Combobox.Button className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
