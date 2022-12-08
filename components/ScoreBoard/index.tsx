@@ -47,20 +47,21 @@ const ScoreBoard = ({ tournament_id, teams, ownerEmail }: TProps) => {
 
 	const handleCellClick = ({
 		column: { id: columnId },
-		row: { original: rowData, index },
+		row: { original: teamObj, index },
 		getValue,
 	}: Cell<any, unknown>): void => {
 		// return early if teamA and teamB are the same team
-		if (columnId === rowData._id) return
+		if (columnId === teamObj._id) return
 		// return early if user is not the owner
 		if (user?.email !== ownerEmail) return
 
 		const cellValue = getValue() as string
-		setFirstTeam(rowData)
+
+		setFirstTeam(teamObj)
 		setRowIndex(index)
 		setColumnId(columnId)
-		setFirstTeamScore(cellValue ? Number(cellValue.split('-')[0]) : 0)
-		setSecondTeamScore(cellValue ? Number(cellValue.split('-')[1]) : 0)
+		setFirstTeamScore(cellValue ? parseInt(cellValue.split('-')[0]) : 0)
+		setSecondTeamScore(cellValue ? parseInt(cellValue.split('-')[1]) : 0)
 		setSecondTeam(
 			(data as any).find(
 				(team: TTeam) => team._id.toString() === columnId
@@ -72,13 +73,15 @@ const ScoreBoard = ({ tournament_id, teams, ownerEmail }: TProps) => {
 	const handleScoreUpdate = async (e: Event) => {
 		e.preventDefault()
 		// return early if conditions are not met
-		if (!firstTeam || !secondTeam || !firstTeamScore || !secondTeamScore)
+		if (!firstTeam || !secondTeam) {
 			return
+		}
 		if (
 			typeof firstTeamScore !== 'number' ||
 			typeof secondTeamScore !== 'number'
-		)
+		) {
 			return
+		}
 
 		const updateRowData = (prev: any[]) =>
 			prev.map((row, index) => {

@@ -12,12 +12,15 @@ import { getTournamentById } from '../../../lib/getTournamentById'
 import type { ReactElement } from 'react'
 import type { TTournament } from '../../../types'
 import AddTeamButton from '../../../components/AddTeamButton'
+import { useRefreshData } from '../../../hooks/useRefreshData'
 
 type TProps = {
 	tournament: TTournament
 }
 
 const Tournament = ({ tournament }: TProps) => {
+	useRefreshData(10000)
+
 	return (
 		<>
 			<main className="lg:col-span-9 xl:col-span-6">

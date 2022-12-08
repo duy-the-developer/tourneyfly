@@ -6,6 +6,9 @@ import { TournamentLayout } from '../../../../components/TournamentLayout'
 // lib
 import { getTournamentById } from '../../../../lib/getTournamentById'
 
+// hooks
+import { useRefreshData } from '../../../../hooks/useRefreshData'
+
 // types
 import type { ReactElement } from 'react'
 import type { TTournament } from '../../../../types'
@@ -17,6 +20,8 @@ type TProps = {
 
 const TournamentResults = ({ tournament }: TProps) => {
 	const { _id, teams, ownerEmail } = tournament
+	useRefreshData(10000)
+
 	return (
 		<main className="lg:col-span-9 xl:col-span-10">
 			<ScoreBoard
