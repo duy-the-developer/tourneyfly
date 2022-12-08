@@ -24,9 +24,12 @@ const Home = ({ articles, tournaments }: TProps) => (
     <>
         <main className='lg:col-span-9 xl:col-span-6'>
             <ItemList>
-                {tournaments.map((each) => {
-                    return <TournamentCard tournament={each} key={each.id} />
-                })}
+                {tournaments.map(
+                    (each) => (
+                        console.log(each),
+                        (<TournamentCard tournament={each} key={each._id} />)
+                    )
+                )}
             </ItemList>
         </main>
         <Aside>
@@ -53,7 +56,7 @@ export async function getServerSideProps() {
         // since we are using getStaticProps, we can fetch data at build time // these functions will not be included in the client bundle
         // that means you can write code such as direct database queries without sending them to the client
 
-        // *** Get news articles
+        // use Promise.all to fetch data in parallel
         const [articles, tournaments] = await Promise.all([
             getArticles(),
             getTournaments(),

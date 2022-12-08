@@ -12,7 +12,7 @@ export default async function createTournament(
         const { name, startDate, ownerEmail } = req.body
         const newTournament = {
             name,
-            startDate,
+            startDate: new Date(startDate),
             teams: [],
             ownerEmail,
             createdAt: new Date(),

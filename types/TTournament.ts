@@ -1,7 +1,6 @@
 export type TTournament = {
-  id: number
-  title: string
-  startDate: string
-  status: string
-  teamNum: number
+    _id: number
+    name: string
+    startDate: string
+    teams: string[]
 }
