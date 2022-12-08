@@ -55,7 +55,7 @@ export const getServerSideProps = async (context: any) => {
             tournament: JSON.parse(JSON.stringify(tournament)),
         }
 
-        return { props }
+        return { props, revalidate: 60 }
     } catch (error) {
         console.error(error)
         // TODO: handle error

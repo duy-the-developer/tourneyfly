@@ -64,6 +64,7 @@ export async function getServerSideProps() {
                 articles,
                 tournaments: JSON.parse(JSON.stringify(tournaments)),
             },
+            revalidate: 60,
         }
     } catch (error) {
         console.error(error)
