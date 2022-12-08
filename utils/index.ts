@@ -1,4 +1,4 @@
-import { classNames } from "./classNames";
-import { getTournamentStatus } from "./getTournamentStatus";
+import { classNames } from './classNames'
+import { getTournamentStatus } from './getTournamentStatus'
 
-export { classNames, getTournamentStatus };
+export { classNames, getTournamentStatus }
