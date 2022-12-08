@@ -20,86 +20,74 @@ import classNames from '../../../../utils/classNames'
 // types
 import { TMainNav } from '../../../../types/TNavigation'
 import { useRouter } from 'next/router'
+import { UserNavigation } from './UserNavigation'
 type TProps = {
-  navigation: TMainNav
+    navigation: TMainNav
 }
 
 const NavBar = ({ navigation }: TProps) => {
-  const { user } = useUser()
-  const { pathname } = useRouter()
+    const { user } = useUser()
+    const { pathname } = useRouter()
 
-  return (
-    <Popover
-      as='header'
-      className={({ open }) =>
-        classNames(
-          open ? 'fixed inset-0 z-40 overflow-y-auto' : '', // add overflow-hidden to prevent double scrollbars
-          'bg-cyan dark:bg-slate-900 shadow-sm lg:static lg:overflow-y-visible'
-        )
-      }
-    >
-      {({ open }) => (
-        <>
-          <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-            <div className='relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12'>
-              <div className='flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2'>
-                <Logo />
-              </div>
-              <SearchBar />
-              <MobileMenuButton open={open} />
-              <div className='hidden lg:flex lg:items-center lg:justify-end xl:col-span-4'>
-                <Link
-                  href='/quick-match'
-                  className={classNames(
-                    pathname === '/quick-match'
-                      ? 'text-black bg-aqua'
-                      : 'text-aqua hover:text-orange',
-                    'ml-5 flex-shrink-0 rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
-                  )}
-                >
-                  <span className='sr-only'>Quick match</span>
-                  <BoltIcon className='h-6 w-6' aria-hidden='true' />
-                </Link>
-                <Link
-                  href='/'
-                  className={classNames(
-                    pathname === '/'
-                      ? 'text-black bg-aqua'
-                      : 'text-aqua hover:text-orange',
-                    'ml-5 flex-shrink-0 rounded-full p-1  focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
-                  )}
-                >
-                  <span className='sr-only'>Tournaments</span>
-                  <TrophyIcon className='h-6 w-6' aria-hidden='true' />
-                </Link>
-
-                {user && <ProfileDropdown />}
-                {user && (
-                  <Button
-                    cStyle='bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
-                    label='New Game'
-                    onClickFunc={() => {
-                      console.log('New Game')
-                    }}
-                  />
-                )}
-
-                {!user && (
-                  <a
-                    href='/api/auth/login'
-                    className='ml-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-medium text-black  focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
-                  >
-                    Sign In
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-          <MobileNav navigation={navigation} />
-        </>
-      )}
-    </Popover>
-  )
+    return (
+        <Popover
+            as='header'
+            className={({ open }) =>
+                classNames(
+                    open ? 'fixed inset-0 z-40 overflow-y-auto' : '', // add overflow-hidden to prevent double scrollbars
+                    'bg-cyan dark:bg-slate-900 shadow-sm lg:static lg:overflow-y-visible'
+                )
+            }
+        >
+            {({ open }) => (
+                <>
+                    <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+                        <div className='relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12'>
+                            <div className='flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2'>
+                                <Logo />
+                            </div>
+                            <SearchBar />
+                            <MobileMenuButton open={open} />
+                            <div className='hidden lg:flex lg:items-center lg:justify-end xl:col-span-4'>
+                                <Link
+                                    href='/quick-match'
+                                    className={classNames(
+                                        pathname === '/quick-match'
+                                            ? 'text-black bg-aqua'
+                                            : 'text-aqua hover:text-orange',
+                                        'ml-5 flex-shrink-0 rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
+                                    )}
+                                >
+                                    <span className='sr-only'>Quick match</span>
+                                    <BoltIcon
+                                        className='h-6 w-6'
+                                        aria-hidden='true'
+                                    />
+                                </Link>
+                                <Link
+                                    href='/'
+                                    className={classNames(
+                                        pathname === '/'
+                                            ? 'text-black bg-aqua'
+                                            : 'text-aqua hover:text-orange',
+                                        'ml-5 flex-shrink-0 rounded-full p-1  focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2'
+                                    )}
+                                >
+                                    <span className='sr-only'>Tournaments</span>
+                                    <TrophyIcon
+                                        className='h-6 w-6'
+                                        aria-hidden='true'
+                                    />
+                                </Link>
+                                <UserNavigation user={user} />
+                            </div>
+                        </div>
+                    </div>
+                    <MobileNav navigation={navigation} />
+                </>
+            )}
+        </Popover>
+    )
 }
 
 export default NavBar
