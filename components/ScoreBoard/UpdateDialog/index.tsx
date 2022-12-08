@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import type { TData } from '..'
 import type { Dispatch, SetStateAction } from 'react'
+import { TTeam } from '../../../types'
 
 type TProps = {
     firstTeam: TData
-    secondTeam: Partial<TData>
+    secondTeam: TData
     firstTeamScore: number
     secondTeamScore: number
     setFirstTeamScore: Dispatch<SetStateAction<number>>

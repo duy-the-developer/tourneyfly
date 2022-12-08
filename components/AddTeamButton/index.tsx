@@ -55,7 +55,7 @@ const AddTeamButton = () => {
     }
 
     const addTeamDialog = (
-        <div className='flex flex-col items-start justify-center gap-y-4'>
+        <div className='flex flex-col items-start justify-center gap-y-4 mb-6'>
             <ComboBoxWithImage
                 label='Country'
                 selected={selectedCountry}

@@ -1,16 +1,14 @@
 // packages
-import { createColumnHelper } from '@tanstack/react-table'
-import Image from 'next/image'
-import { NameCell } from '../common/Table/NameCell'
 import { useState } from 'react'
 
 // data
-import { teams } from '../../data.test'
 import { Modal, Table } from '../common'
+import { useTableData } from '../../hooks/useTableData'
 
 // types
-import type { ColumnDef, Cell } from '@tanstack/react-table'
+import type { Cell } from '@tanstack/react-table'
 import { UpdateDiaglog } from './UpdateDialog'
+import type { TTeam } from '../../types'
 
 export type TUpdateParams = {
     rowIndex: number
@@ -19,81 +17,19 @@ export type TUpdateParams = {
 }
 
 export type TData = {
-    id: string
+    _id: string
     name: string
     imageUrl: string
     members: string[]
-    a: string | null
-    b: string | null
-    c: string | null
-    d: string | null
-    e: string | null
-    f: string | null
-    g: string | null
-    h: string | null
+    [key: string]: any | null
 }
 
-const columnHelper = createColumnHelper<TData>()
-
-const rowData: TData[] = teams.map((each) => {
-    const { id, name, imageUrl, members, results } = each
-    return {
-        id,
-        name,
-        imageUrl,
-        members,
-        ...results,
-    }
-})
-
-// generate array of column headers sorted by team name alphabetically -> ['925ers','Al Capowned','C-Suite Champs',...]
-const headers = [
-    ...teams.sort((a, b) => (a.name > b.name ? 1 : -1)).map((each) => each.id),
-]
-
-const teamColumns: ColumnDef<TData, string>[] = headers
-    .map((key) =>
-        columnHelper.accessor((row) => row[key as keyof typeof row], {
-            id: key,
-            header: ({ column: { id } }) => <TeamHeader id={id} />,
-        })
-    )
-    // filter out unwanted columns
-    .filter((column) => column.id !== ('members' || 'imageUrl' || 'id'))
-
-// use headers array + columnHelper from @tanstack/react-table to generate columns
-const allColumns: ColumnDef<TData, string>[] = [
-    // NAME column
-    columnHelper.accessor((row) => row.name, {
-        id: 'name',
-        header: 'NAME',
-        cell: ({
-            row: {
-                original: { name, imageUrl, members },
-            },
-        }) => <NameCell name={name} imageUrl={imageUrl} members={members} />,
-    }),
-    // the rest
-    ...teamColumns,
-]
-
-const TeamHeader = ({ id }: { id: string }) => (
-    <div className='flex justify-center'>
-        <Image
-            src={teams.find((team) => team.id === id)!.imageUrl}
-            alt={`team ${id} logo`}
-            className='rounded-full'
-            width={30}
-            height={30}
-        />
-    </div>
-)
-
-const ScoreBoard = () => {
+const ScoreBoard = ({ teams }: { teams: TTeam[] }) => {
+    const [rowData, allColumns] = useTableData(teams)
     const [data, setData] = useState(() => [...rowData])
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [firstTeam, setFirstTeam] = useState<TData | null>(null)
-    const [secondTeam, setSecondTeam] = useState<Partial<TData> | null>(null)
+    const [secondTeam, setSecondTeam] = useState<TData | null>(null)
     const [firstTeamScore, setFirstTeamScore] = useState<number>(0)
     const [secondTeamScore, setSecondTeamScore] = useState<number>(0)
     const [rowIndex, setRowIndex] = useState<number | null>(null)
@@ -111,24 +47,26 @@ const ScoreBoard = () => {
         setFirstTeam(rowData)
         setRowIndex(index)
         setColumnId(columnId)
-        setFirstTeamScore(Number(cellValue.split('-')[0]))
-        setSecondTeamScore(Number(cellValue.split('-')[1]))
+        setFirstTeamScore(cellValue ? Number(cellValue.split('-')[0]) : 0)
+        setSecondTeamScore(cellValue ? Number(cellValue.split('-')[1]) : 0)
         setSecondTeam(
-            teams.find((each) => each.id === columnId) as Partial<TData>
+            (data as any).find(
+                (team: TTeam) => team._id.toString() === columnId
+            )
         )
         setOpenModal(true)
     }
 
-    const handleCellUpdate = (e: Event) => {
+    const handleScoreUpdate = (e: Event) => {
         e.preventDefault()
         const updateRowData = (prev: any[]) =>
             prev.map((row, index) => {
                 // update the inverse result
-                if (row.id === columnId) {
+                if (row._id === columnId) {
                     return {
                         ...row,
                         [firstTeam!
-                            .id]: `${secondTeamScore!.toString()}-${firstTeamScore!.toString()}`,
+                            ._id]: `${secondTeamScore!.toString()}-${firstTeamScore!.toString()}`,
                     }
                 }
 
@@ -153,9 +91,9 @@ const ScoreBoard = () => {
                 title='Update Results'
                 message=''
                 okayLabel='Update'
-                handleOkay={handleCellUpdate}
+                handleOkay={handleScoreUpdate}
             >
-                {firstTeam && secondTeam && secondTeam.id && (
+                {firstTeam && secondTeam && secondTeam._id && (
                     <UpdateDiaglog
                         firstTeam={firstTeam}
                         secondTeam={secondTeam}
@@ -169,7 +107,6 @@ const ScoreBoard = () => {
             <Table
                 columnData={allColumns}
                 rowData={data}
-                defaultSort={[{ id: 'name', desc: false }]}
                 handleCellClick={handleCellClick}
             />
         </>

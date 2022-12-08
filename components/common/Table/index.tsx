@@ -17,27 +17,25 @@ import { TableBody } from './TableBody'
 type TProps = {
     columnData: any[]
     rowData: any[]
-    defaultSort: [
-        {
-            id: string
-            desc: boolean
-        }
-    ]
+    defaultSort?:
+        | [
+              {
+                  id: string
+                  desc: boolean
+              }
+          ]
+        | []
     handleCellClick?: (cell: Cell<any, unknown>) => void
 }
 
 export const Table = ({
     columnData,
     rowData,
-    defaultSort,
+    defaultSort = [],
     handleCellClick,
 }: TProps) => {
-    const [sorting, setSorting] = useState<SortingState>([])
+    const [sorting, setSorting] = useState<SortingState>(defaultSort)
     const columns = useMemo(() => columnData, [])
-
-    useEffect(() => {
-        setSorting(defaultSort)
-    }, [])
 
     const table = useReactTable({
         data: rowData,

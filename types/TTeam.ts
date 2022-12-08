@@ -1,7 +1,8 @@
 import type { TCountry } from './TCountry'
+import type { ObjectId } from 'mongodb'
 
 export type TTeam = {
-    _id: string
+    _id: ObjectId
     name: string
     country: TCountry
     members: string[]
@@ -9,4 +10,7 @@ export type TTeam = {
     losses: number
     ties: number
     totalPoints: number
+    results: {
+        [key: string]: any
+    }
 }

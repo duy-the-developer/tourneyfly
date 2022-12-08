@@ -25,10 +25,11 @@ const HeaderContent = ({ header, i }: TProps) => (
 
 export const TableHeader = ({ header, i }: TProps) => (
     <th
-        className={`${classNames(
+        className={classNames(
             i === 0 ? 'text-left' : 'text-center',
-            header.column.getCanSort() ? 'cursor-pointer select-none' : ''
-        )} transition py-3.5 px-3 font-semibold h-8 hover:bg-purple`}
+            header.column.getCanSort() ? 'cursor-pointer select-none' : '',
+            'transition py-3.5 px-3 font-semibold h-8 hover:bg-purple'
+        )}
         onClick={header.column.getToggleSortingHandler()}
     >
         {header.isPlaceholder ? null : <HeaderContent header={header} i={i} />}

@@ -47,21 +47,15 @@ Tournament.getLayout = (page: ReactElement) => {
 export const getServerSideProps = async (context: any) => {
     const { tournament_id } = context.query
     try {
-        // since we are using getStaticProps, we can fetch data at build time // these functions will not be included in the client bundle
-        // that means you can write code such as direct database queries without sending them to the client
-
-        // use Promise.all to fetch data in parallel
         const [tournament] = await Promise.all([
-            // getArticles(),
             getTournamentById(tournament_id as string),
         ])
 
-        return {
-            props: {
-                // articles,
-                tournament: JSON.parse(JSON.stringify(tournament)),
-            },
+        const props = {
+            tournament: JSON.parse(JSON.stringify(tournament)),
         }
+
+        return { props }
     } catch (error) {
         console.error(error)
         // TODO: handle error
