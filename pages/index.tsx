@@ -54,14 +54,14 @@ export async function getServerSideProps() {
         // that means you can write code such as direct database queries without sending them to the client
 
         // use Promise.all to fetch data in parallel
-        const [tournaments] = await Promise.all([
-            // getArticles(),
+        const [articles, tournaments] = await Promise.all([
+            getArticles(),
             getTournaments(),
         ])
 
         return {
             props: {
-                // articles,
+                articles,
                 tournaments: JSON.parse(JSON.stringify(tournaments)),
             },
         }
