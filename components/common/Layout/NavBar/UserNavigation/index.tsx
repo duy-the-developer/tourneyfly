@@ -16,7 +16,7 @@ export const UserNavigation = ({ user }: { user: UserProfile | undefined }) => {
                 />
                 <ProfileDropdown />
                 <Button
-                    cStyle='bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
+                    cStyle='ml-6 bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105'
                     label='New Game'
                     onClickFunc={() => {
                         setOpenModal(true)

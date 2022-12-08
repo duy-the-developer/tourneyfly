@@ -7,7 +7,7 @@ type TProps = { id: string; teams: TTeam[] }
 
 export const TeamHeader = ({ id, teams }: TProps) => {
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center min-w-[30px]'>
             <Image
                 src={
                     teams.find((team) => team._id.toString() === id)!.country

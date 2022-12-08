@@ -18,7 +18,7 @@ import { classNames } from '../../../../utils'
 // data
 
 // types
-import { TMainNav } from '../../../../types/TNavigation'
+import { TMainNav, TSubNav } from '../../../../types/TNavigation'
 import { useRouter } from 'next/router'
 import { UserNavigation } from './UserNavigation'
 type TProps = {
