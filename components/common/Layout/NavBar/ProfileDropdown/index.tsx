@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { ProfileImage } from '../../../../common'
 
 // utils
-import classNames from '../../../../../utils/classNames'
+import { classNames } from '../../../../../utils'
 
 // data
 import { userNavigation } from '../../../../../data.test'

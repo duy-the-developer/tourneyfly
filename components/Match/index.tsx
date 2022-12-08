@@ -13,7 +13,7 @@ import {
     StarIcon,
 } from '@heroicons/react/20/solid'
 
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils'
 
 type TTeam = {
     id: string

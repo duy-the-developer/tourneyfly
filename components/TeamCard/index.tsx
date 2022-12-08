@@ -5,7 +5,7 @@ import {
     UsersIcon,
 } from '@heroicons/react/24/outline'
 import React from 'react'
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils'
 import Link from 'next/link'
 
 type TTeam = {
