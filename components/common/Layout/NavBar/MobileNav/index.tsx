@@ -121,13 +121,23 @@ const MobileNav = ({ navigation }: TProps) => {
 				</div>
 
 				<div className="mx-auto mt-6 max-w-3xl sm:px-6">
-					<Button
-						cStyle="text-lg w-full bg-gradient-to-br from-aqua to-dpurple duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200"
-						label="New Game"
-						onClickFunc={() => {
-							setOpenModal(true)
-						}}
-					/>
+					{user && (
+						<Button
+							cStyle="text-lg w-full bg-gradient-to-br from-aqua to-dpurple duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200"
+							label="New Game"
+							onClickFunc={() => {
+								setOpenModal(true)
+							}}
+						/>
+					)}
+					{!user && (
+						<a
+							href="/api/auth/login"
+							className="ml-6 inline-flex items-center rounded-md px-4 py-2 text-sm font-medium text-black  focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 bg-gradient-to-br from-aqua to-dpurple transition duration-300 hover:from-rose-900 hover:via-orange hover:to-rose-200 hover:scale-105"
+						>
+							Sign In
+						</a>
+					)}
 				</div>
 			</Popover.Panel>
 			<CreateTournamentModal
