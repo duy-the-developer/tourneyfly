@@ -9,6 +9,7 @@ type TProps = {
     okayLabel?: string
     children: ReactNode
     handleOkay: (arg?: any) => void
+    icon?: ReactNode
 }
 
 export const Modal = ({
@@ -19,6 +20,7 @@ export const Modal = ({
     title,
     children,
     handleOkay,
+    icon,
 }: TProps) => {
     const cancelButtonRef = useRef(null)
 
@@ -60,6 +62,7 @@ export const Modal = ({
                                             as='h3'
                                             className='text-lg font-medium leading-6 text-aqua'
                                         >
+                                            {icon}
                                             {title}
                                         </Dialog.Title>
                                         <div className='mt-2'>

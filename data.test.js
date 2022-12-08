@@ -320,3 +320,197 @@ export const teams = [
         },
     },
 ]
+export const countries = [
+    {
+        id: 1,
+        name: 'Qatar',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/qatar/flag-square-250.png',
+    },
+    {
+        id: 2,
+        name: 'Ecuador',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/ecuador/flag-square-250.png',
+    },
+    {
+        id: 3,
+        name: 'Senegal',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/senegal/flag-square-250.png',
+    },
+    {
+        id: 4,
+        name: 'Netherlands',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/netherlands/flag-square-250.png',
+    },
+    {
+        id: 5,
+        name: 'England',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/england/flag-square-250.png',
+    },
+    {
+        id: 6,
+        name: 'IR Iran',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/iran/flag-square-250.png',
+    },
+    {
+        id: 7,
+        name: 'USA',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-250.png',
+    },
+    {
+        id: 8,
+        name: 'Wales',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/wales/flag-square-250.png',
+    },
+    {
+        id: 9,
+        name: 'Argentina',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/argentina/flag-square-250.png',
+    },
+    {
+        id: 10,
+        name: 'Saudi Arabia',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/saudi-arabia/flag-square-250.png',
+    },
+    {
+        id: 11,
+        name: 'Mexico',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/mexico/flag-square-250.png',
+    },
+    {
+        id: 12,
+        name: 'Poland',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/poland/flag-square-250.png',
+    },
+    {
+        id: 13,
+        name: 'France',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/france/flag-square-250.png',
+    },
+    {
+        id: 14,
+        name: 'Australia',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/australia/flag-square-250.png',
+    },
+    {
+        id: 15,
+        name: 'Denmark',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/denmark/flag-square-250.png',
+    },
+    {
+        id: 16,
+        name: 'Tunisia',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/tunisia/flag-square-250.png',
+    },
+    {
+        id: 17,
+        name: 'Spain',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/spain/flag-square-250.png',
+    },
+    {
+        id: 18,
+        name: 'Costa Rica',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/costa-rica/flag-square-250.png',
+    },
+    {
+        id: 19,
+        name: 'Germany',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/germany/flag-square-250.png',
+    },
+    {
+        id: 20,
+        name: 'Japan',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/japan/flag-square-250.png',
+    },
+    {
+        id: 21,
+        name: 'Belgium',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/belgium/flag-square-250.png',
+    },
+    {
+        id: 22,
+        name: 'Canada',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/canada/flag-square-250.png',
+    },
+    {
+        id: 23,
+        name: 'Morocco',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/morocco/flag-square-250.png',
+    },
+    {
+        id: 24,
+        name: 'Croatia',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/croatia/flag-square-250.png',
+    },
+    {
+        id: 25,
+        name: 'Brazil',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/brazil/flag-square-250.png',
+    },
+    {
+        id: 26,
+        name: 'Serbia',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/serbia/flag-square-250.png',
+    },
+    {
+        id: 27,
+        name: 'Switzerland',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/switzerland/flag-square-250.png',
+    },
+    {
+        id: 28,
+        name: 'Cameroon',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/cameroon/flag-square-250.png',
+    },
+    {
+        id: 29,
+        name: 'Portugal',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/portugal/flag-square-250.png',
+    },
+    {
+        id: 30,
+        name: 'Ghana',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/ghana/flag-square-250.png',
+    },
+    {
+        id: 31,
+        name: 'Uruquay',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/uruguay/flag-square-250.png',
+    },
+    {
+        id: 32,
+        name: 'Korea Republic',
+        imageUrl:
+            'https://cdn.countryflags.com/thumbs/south-korea/flag-square-250.png',
+    },
+]

@@ -11,6 +11,7 @@ import { getTournamentById } from '../../../lib/getTournamentById'
 // types
 import type { ReactElement } from 'react'
 import type { TTournament } from '../../../types'
+import AddTeamButton from '../../../components/AddTeamButton'
 
 type TProps = {
     tournament: TTournament
@@ -21,6 +22,7 @@ const Tournament = ({ tournament }: TProps) => {
         <>
             <main className='lg:col-span-9 xl:col-span-6'>
                 <LeaderBoard />
+                <AddTeamButton />
             </main>
             <Aside>
                 <Section label='Tournament details'>

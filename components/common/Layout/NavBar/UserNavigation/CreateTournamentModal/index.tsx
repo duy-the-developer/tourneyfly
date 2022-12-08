@@ -3,6 +3,7 @@ import { InputWithLabel, Modal } from '../../../../../common'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
+import { TrophyIcon } from '@heroicons/react/24/outline'
 
 type TProps = {
     openModal: boolean
@@ -80,6 +81,7 @@ export const CreateTournamentModal = ({ openModal, setOpenModal }: TProps) => {
             title='New Tournament'
             message=''
             handleOkay={createTournament}
+            icon={<TrophyIcon className='w-10 h-10 text-aqua mx-auto mb-2' />}
         >
             {modalDialog}
         </Modal>
