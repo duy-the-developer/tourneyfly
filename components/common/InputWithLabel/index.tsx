@@ -5,6 +5,7 @@ type TProps = {
     placeholder?: string
     onChangeHandler: (arg?: any) => void
     defaultValue?: string
+    required?: boolean
     min?: string | number
     max?: string | number
 }
@@ -16,6 +17,7 @@ export const InputWithLabel = ({
     placeholder,
     onChangeHandler,
     defaultValue,
+    required,
     min,
     max,
 }: TProps) => {
@@ -29,6 +31,8 @@ export const InputWithLabel = ({
             </label>
             <div className='mt-1'>
                 <input
+                    aria-required={required}
+                    required={required}
                     type={type}
                     name={id}
                     id={id}

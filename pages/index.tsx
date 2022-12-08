@@ -7,16 +7,20 @@ import TournamentCard from '../components/TournamentCard'
 import Headlines from '../components/Headlines'
 import { HomeLayout } from '../components/HomeLayout'
 
+// lib
+import { getArticles } from '../lib/getArticles'
+import { getTournaments } from '../lib/getTournaments'
+
 // data
-import { currentMatch, tournaments } from '../data.test'
+import { currentMatch } from '../data.test'
 
 // types
-import type { TArticle } from '../types/TArticle'
 import type { ReactElement } from 'react'
+import type { TTournament, TArticle } from '../types'
 
-export type TProps = { articles: TArticle[] }
+export type TProps = { articles: TArticle[]; tournaments: TTournament[] }
 
-const Home = ({ articles }: TProps) => (
+const Home = ({ articles, tournaments }: TProps) => (
     <>
         <main className='lg:col-span-9 xl:col-span-6'>
             <ItemList>
@@ -44,17 +48,25 @@ Home.getLayout = (page: ReactElement) => {
     )
 }
 
-export async function getStaticProps() {
-    const articleRes = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=gb&category=sports&pageSize=10&apiKey=${process.env.NEWSAPI_KEY}`
-    ).then((res) => res.json())
+export async function getServerSideProps() {
+    try {
+        // since we are using getStaticProps, we can fetch data at build time // these functions will not be included in the client bundle
+        // that means you can write code such as direct database queries without sending them to the client
 
-    const { articles } = articleRes
+        // *** Get news articles
+        const [articles, tournaments] = await Promise.all([
+            getArticles(),
+            getTournaments(),
+        ])
 
-    return {
-        props: {
-            articles,
-        },
+        return {
+            props: {
+                articles,
+                tournaments: JSON.parse(JSON.stringify(tournaments)),
+            },
+        }
+    } catch (error) {
+        console.error(error)
     }
 }
 

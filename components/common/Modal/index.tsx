@@ -22,15 +22,10 @@ export const Modal = ({
 }: TProps) => {
     const cancelButtonRef = useRef(null)
 
-    const handleUpdate = () => {
-        handleOkay()
-        setOpen(false)
-    }
-
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog
-                as='div'
+                as='form'
                 className='relative z-10'
                 initialFocus={cancelButtonRef}
                 onClose={setOpen}
@@ -79,9 +74,9 @@ export const Modal = ({
                                 </div>
                                 <div className='mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3'>
                                     <button
-                                        type='button'
+                                        type='submit'
                                         className='transition inline-flex w-full justify-center rounded-md border border-transparent bg-aqua px-4 py-2 text-base font-medium text-slate-900 shadow-sm hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 sm:col-start-2 sm:text-sm'
-                                        onClick={handleUpdate}
+                                        onClick={handleOkay}
                                     >
                                         {okayLabel}
                                     </button>

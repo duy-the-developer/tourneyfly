@@ -119,7 +119,8 @@ const ScoreBoard = () => {
         setOpenModal(true)
     }
 
-    const handleCellUpdate = () => {
+    const handleCellUpdate = (e: Event) => {
+        e.preventDefault()
         const updateRowData = (prev: any[]) =>
             prev.map((row, index) => {
                 // update the inverse result
@@ -141,6 +142,7 @@ const ScoreBoard = () => {
             })
 
         setData(updateRowData)
+        setOpenModal(false)
     }
 
     return (
