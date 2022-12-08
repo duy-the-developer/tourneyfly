@@ -21,7 +21,7 @@ const Tournament = ({ tournament }: TProps) => {
     return (
         <>
             <main className='lg:col-span-9 xl:col-span-6'>
-                <LeaderBoard />
+                <LeaderBoard teams={tournament.teams as any} />
                 <AddTeamButton />
             </main>
             <Aside>

@@ -35,6 +35,7 @@ export const ComboBoxWithImage = ({ label, selected, setSelected }: TProps) => {
                 <Combobox.Input
                     className='text-slate-400 w-full rounded-md border border-gray-300 bg-slate-800 py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm'
                     onChange={(event) => setQuery(event.target.value)}
+                    // @ts-ignore
                     displayValue={(country) => country?.name}
                 />
                 <Combobox.Button className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
@@ -46,10 +47,10 @@ export const ComboBoxWithImage = ({ label, selected, setSelected }: TProps) => {
 
                 {filteredCountries.length > 0 && (
                     <Combobox.Options className='absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-slate-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
-                        {filteredCountries.map((person) => (
+                        {filteredCountries.map((country) => (
                             <Combobox.Option
-                                key={person.id}
-                                value={person}
+                                key={country.id}
+                                value={country}
                                 className={({ active }) =>
                                     classNames(
                                         'relative cursor-default select-none py-2 pl-3 pr-9',
@@ -63,8 +64,9 @@ export const ComboBoxWithImage = ({ label, selected, setSelected }: TProps) => {
                                     <>
                                         <div className='flex items-center'>
                                             <Image
-                                                src={person.imageUrl}
-                                                alt=''
+                                                quality={50}
+                                                src={country.imageUrl}
+                                                alt={country.name}
                                                 className='h-6 w-6 flex-shrink-0 rounded-full'
                                                 height={24}
                                                 width={24}
@@ -75,7 +77,7 @@ export const ComboBoxWithImage = ({ label, selected, setSelected }: TProps) => {
                                                     selected && 'font-semibold'
                                                 )}
                                             >
-                                                {person.name}
+                                                {country.name}
                                             </span>
                                         </div>
 

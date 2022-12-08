@@ -4,14 +4,14 @@ import { UserGroupIcon } from '@heroicons/react/24/outline'
 
 import { InputWithLabel, Modal } from '../common'
 import { ComboBoxWithImage } from '../common/ComboBoxWithImage'
+import { useRouter } from 'next/router'
 
-export type TCountry = {
-    id: string
-    name: string
-    imageUrl: string
-}
+import type { TCountry } from '../../types'
 
 const AddTeamButton = () => {
+    const router = useRouter()
+    const { tournament_id } = router.query
+
     const [openModal, setOpenModal] = useState(false)
     const [selectedCountry, setSelectedCountry] = useState<TCountry | null>(
         null
@@ -20,8 +20,37 @@ const AddTeamButton = () => {
     const [member1, setMember1] = useState('')
     const [member2, setMember2] = useState('')
 
-    const handleAddTeam = () => {
-        console.log('add team')
+    const handleAddTeam = async (e: Event) => {
+        e.preventDefault()
+        // return early if conditions are not met
+        if (selectedCountry === null) return
+        if (teamName === '') return
+        if (member1 === '') return
+        if (member2 === '') return
+
+        // create tournament
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                tournament_id,
+                name: teamName,
+                country: selectedCountry,
+                members: [member1, member2],
+            }),
+        }
+
+        const response = await fetch('/api/tournaments/add-team', fetchOptions)
+
+        if (response.status === 200) {
+            // trigger revalidation
+            router.replace(router.asPath)
+        } else {
+            console.log('Error adding team to tournament')
+        }
+
         setOpenModal(false)
     }
 
@@ -38,7 +67,7 @@ const AddTeamButton = () => {
                 label='Team Name'
                 placeholder='My Team'
                 onChangeHandler={(e) => setTeamName(e.target.value)}
-                required={true}
+                required
             />
             <InputWithLabel
                 id='member-1'
@@ -46,7 +75,7 @@ const AddTeamButton = () => {
                 label='Member 1'
                 placeholder='John Doe'
                 onChangeHandler={(e) => setMember1(e.target.value)}
-                required={true}
+                required
             />
             <InputWithLabel
                 id='member-2'
@@ -54,7 +83,7 @@ const AddTeamButton = () => {
                 label='Member 2'
                 placeholder='Jane Doe'
                 onChangeHandler={(e) => setMember2(e.target.value)}
-                required={true}
+                required
             />
         </div>
     )
