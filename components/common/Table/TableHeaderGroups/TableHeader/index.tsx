@@ -1,5 +1,5 @@
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import classNames from '../../../../../utils/classNames'
+import { classNames } from '../../../../../utils'
 import { flexRender } from '@tanstack/react-table'
 import type { Header } from '@tanstack/react-table'
 

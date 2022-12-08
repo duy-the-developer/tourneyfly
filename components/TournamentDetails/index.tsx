@@ -5,7 +5,7 @@ import {
     TrophyIcon,
 } from '@heroicons/react/24/outline'
 
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils'
 
 const TournamentDetails = ({ tournament }: { tournament: TTournament }) => {
     const { title, status, teamNum, startDate } = tournament

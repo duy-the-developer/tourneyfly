@@ -1,4 +1,4 @@
-import classNames from '../../../../utils/classNames'
+import { classNames } from '../../../../utils'
 import { flexRender, Row } from '@tanstack/react-table'
 import type { Table, Cell } from '@tanstack/react-table'
 
