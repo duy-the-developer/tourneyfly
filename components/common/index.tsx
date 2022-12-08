@@ -9,17 +9,19 @@ import Section from './Section'
 import Sidebar from './Sidebar'
 import { Table } from './Table'
 import { Modal } from './Modal'
+import { InputWithLabel } from './InputWithLabel'
 
 export {
-  Aside,
-  Layout,
-  PageLayout,
-  Button,
-  Container,
-  ItemList,
-  ProfileImage,
-  Section,
-  Sidebar,
-  Table,
-  Modal,
+    Aside,
+    Layout,
+    PageLayout,
+    Button,
+    Container,
+    ItemList,
+    ProfileImage,
+    Section,
+    Sidebar,
+    Table,
+    Modal,
+    InputWithLabel,
 }
