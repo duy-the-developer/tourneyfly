@@ -21,7 +21,7 @@ export const UpdateDiaglog = ({
     setSecondTeamScore,
 }: TProps) => (
     <div className='flex justify-between items-center w-full'>
-        <div className='w-1/2 h-full text-slate-200 flex items-center justify-center'>
+        <div className='w-1/2 h-full text-slate-200 flex items-center justify-center mr-4'>
             <Image
                 src={firstTeam.imageUrl}
                 alt={`team ${firstTeam.name} logo`}
@@ -47,7 +47,7 @@ export const UpdateDiaglog = ({
                 onChange={(e) => setSecondTeamScore(Number(e.target.value))}
             />
         </div>
-        <div className='w-1/2 h-full text-slate-200 flex items-center justify-center'>
+        <div className='w-1/2 h-full text-slate-200 flex items-center justify-center ml-4'>
             <Image
                 src={secondTeam.imageUrl!}
                 alt={`team ${secondTeam.name} logo`}
