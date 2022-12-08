@@ -8,6 +8,8 @@ import { getTournamentById } from '../../../../lib/getTournamentById'
 
 // hooks
 import { useRefreshData } from '../../../../hooks/useRefreshData'
+import { useRouter } from 'next/router'
+import { useState, useReducer, useEffect } from 'react'
 
 // types
 import type { ReactElement } from 'react'
@@ -20,6 +22,7 @@ type TProps = {
 
 const TournamentResults = ({ tournament }: TProps) => {
 	const { _id, teams, ownerEmail } = tournament
+
 	useRefreshData(10000)
 
 	return (

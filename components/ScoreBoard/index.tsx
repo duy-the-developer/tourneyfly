@@ -73,15 +73,14 @@ const ScoreBoard = ({ tournament_id, teams, ownerEmail }: TProps) => {
 	const handleScoreUpdate = async (e: Event) => {
 		e.preventDefault()
 		// return early if conditions are not met
-		if (!firstTeam || !secondTeam) {
-			return
-		}
+		if (!firstTeam || !secondTeam) return
 		if (
 			typeof firstTeamScore !== 'number' ||
 			typeof secondTeamScore !== 'number'
-		) {
+		)
 			return
-		}
+
+		if (firstTeamScore < 0 || secondTeamScore < 0) return
 
 		const updateRowData = (prev: any[]) =>
 			prev.map((row, index) => {
