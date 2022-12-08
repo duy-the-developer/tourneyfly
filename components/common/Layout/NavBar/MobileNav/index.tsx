@@ -105,6 +105,7 @@ const MobileNav = ({ navigation }: TProps) => {
                         <div className='w-full flex items-end justify-end'>
                             {tournamentNavigation.map((each) => (
                                 <button
+                                    key={each.name}
                                     type='button'
                                     className='ml-2 flex-shrink-0 rounded-full bg-gray-900 p-1 text-aqua hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2'
                                 >
